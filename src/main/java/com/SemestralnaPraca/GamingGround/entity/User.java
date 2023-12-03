@@ -7,7 +7,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
 import java.util.UUID;
+import java.util.List;
 
 @Entity
 @Table(name = "pouzivatel")
@@ -24,7 +26,10 @@ public class User {
     private String name;
     private String surname;
     private String email;
+    private String password;
     private String phoneNumber;
-    private OffsetDateTime dateOfBirth;
+ //   private OffsetDateTime dateOfBirth;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Address> addresses = new ArrayList<>();
 }

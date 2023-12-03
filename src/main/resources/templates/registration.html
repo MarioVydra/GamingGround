@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Ground | Registration</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+
+<body id="registration-body">
+<video autoplay muted loop id="myVideo">
+    <source th:src="@{/Images/login.mp4}" type="video/mp4">
+</video>
+
+<div class="registration">
+    <form>
+        <div class="registration-header">
+            <a th:href="@{/index.html}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+            <a th:href="@{/index.html}"><h1>Gaming Ground</h1></a>
+        </div>
+
+        <div class="registration-input">
+            <label for="email"><b>E-mail:</b></label>
+            <input type="text" id="email" name="email" placeholder="Your e-mail" required>
+
+            <label for="password"><b>Password:</b></label>
+            <input type="password" id="password" name="password" placeholder="Your password" required>
+
+            <label for="password-repeat"><b>Repeat password:</b></label>
+            <input type="password" id="password-repeat" name="passwordRepeat" placeholder="Repeat your password" required>
+
+            <label for="name"><b>Name:</b></label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
+            <label for="surname"><b>Surname:</b></label>
+            <input type="text" id="surname" name="surname" placeholder="Your surname" required>
+
+            <label for="telephone"><b>Your telephone number:</b></label>
+            <input type="text" id="telephone" name="telephone" placeholder="Your telephone number (e.g. +421910555798)" required>
+
+            <label for="street"><b>Your street:</b></label>
+            <input type="text" id="street" name="street" placeholder="Your street (e.g. Štefánikova)" required>
+
+            <label for="number"><b>Your house number:</b></label>
+            <input type="text" id="number" name="number" placeholder="Your house number (e.g. 254)" required>
+
+            <label for="code"><b>Your postal code:</b></label>
+            <input type="text" id="code" name="code" placeholder="Your postal code (e.g. 098 02)" required>
+
+            <label for="country"><b>Your country:</b></label>
+            <input type="text" id="country" name="country" placeholder="Your country (e.g Slovakia)" required>
+
+            <label id="privacy-policy">
+                <input type="checkbox" id="privacy-policy-input" name="privacyPolicy" required>
+                By checking this box you agree with our <a href="privacy-policy.html">Privacy policy</a> and <a href="terms-and-conditions.html">Terms & conditions</a>
+            </label>
+
+            <h4><a th:href="@{/login.html}">Already registered</a></h4>
+
+            <input id="registration-submit" type="submit" value="Submit" onclick="validateRegistration()">
+        </div>
+    </form>
+</div>
+<script th:src="@{/validateRegistration.js}"></script>
+</body>
+</html>

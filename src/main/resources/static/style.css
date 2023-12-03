@@ -1,0 +1,1514 @@
+* {
+    font-family: Bahnschrift, sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: lightgrey;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    font-size: 75px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+h4, button {
+    font-size: 25px;
+}
+
+.navbar {
+    background: slategrey;
+    box-shadow: 0 0 3px black;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 50px;
+    position: fixed;
+    z-index: 100;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu li {
+    list-style: none;
+    padding-left: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.5s ease;
+}
+
+.menu a:hover, .menu a.active {
+    color: lightgrey;
+}
+
+.mobile {
+    display: none;
+}
+
+.logo-image, .hamburger-image {
+    width: 40px;
+    height: 40px;
+}
+
+.cart-image, .close-image, .profile-image {
+    width: 25px;
+    height: 25px;
+}
+
+.close-image {
+    display: none;
+}
+
+.news1, .news2, .news3, .news4, .news5 {
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 200px 100px;
+}
+
+.news1 {
+    background-image: url("Images/new1.jpg");
+}
+
+.news2 {
+    background-image: url("Images/new2.jpg");
+    text-align: right;
+}
+
+.news3 {
+    background-image: url("Images/new3.jpeg");
+    text-align: right;
+}
+
+.news4 {
+    background-image: url("Images/new4.jpg");
+    text-align: center;
+}
+
+.news5 {
+    background-image: url("Images/new5.jpg");
+}
+
+.news1 h1 {
+    color: greenyellow;
+}
+
+.news2 h1 {
+    color: yellow;
+}
+
+.news3 h1 {
+    color: aqua;
+}
+
+.news4 h1 {
+    color: dodgerblue;
+}
+
+.news5 h1 {
+    color: grey;
+}
+
+.news1 h2, .news2 h2, .news3 h2, .news5 h2 {
+    color: white;
+}
+
+.news1 h3, .news2 h3, .news3 h3, .news5 h3 {
+    color: white;
+}
+
+.news4 h3, .news4 h2 {
+    color: darkgray;
+}
+
+.news1 button, .news2 button, .news3 button, .news4 button, .news5 button {
+    color: white;
+    background-color: transparent;
+    border: none;
+}
+
+.news4 button {
+    color: darkgray;
+}
+
+.news1 button:hover, .news2 button:hover, .news3 button:hover,.news4 button:hover, .news5 button:hover {
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.news1 button:hover {
+    color: greenyellow;
+}
+
+.news2 button:hover {
+    color: yellow;
+}
+
+.news3 button:hover {
+    color: aqua;
+}
+
+.news4 button:hover {
+    color: dodgerblue;
+}
+
+.news5 button:hover {
+    color: grey;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 20px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+.dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.activeSlide, .dot:hover {
+    background-color: #717171;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+.banner {
+    width: 100%;
+    height: 500px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 50px;
+}
+
+.banner h1{
+    margin-top: 0;
+    padding-left: 50%;
+}
+
+.banner button {
+    cursor: pointer;
+}
+
+#banner1 {
+    background-image: url("Images/banner1.jpg");
+    background-size: cover;
+    color: deeppink;
+}
+
+#banner1 a {
+    cursor: pointer;
+}
+
+#banner1 button {
+    border: 3px solid purple;
+    color: deeppink;
+    background: transparent;
+    border-radius: 10px;
+}
+
+#banner1 button:hover {
+    background: linear-gradient(to left, transparent, purple);
+}
+
+
+.product-section, .bestseller-section {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.products-container, .bestseller-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.products-container a, .bestseller-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.product, .bestseller {
+    padding: 20px;
+    background: darkgrey;
+    margin: 25px 25px;
+    transition: 0.5s;
+    border-radius: 25px;
+}
+
+.bestseller {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product:hover {
+    box-shadow: 20px 20px 30px grey;
+}
+
+#bestseller1:hover {
+    background-image: url("Images/product-SpiderMan2.png");
+    border-radius: 50%;
+    background-size: cover;
+}
+
+#bestseller2:hover {
+    background-image: url("Images/bestseller2.jpeg");
+    border-radius: 50%;
+    background-size: cover;
+}
+
+#bestseller3:hover {
+    background-image: url("Images/bestseller3.jpg");
+    border-radius: 50%;
+    background-size: cover;
+}
+
+#bestseller1:hover .bestseller-text, #bestseller2:hover .bestseller-text, #bestseller3:hover .bestseller-text {
+    display: none;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 350px;
+    height: 450px;
+    border: none;
+    border-radius: 20px;
+}
+
+.product-description h3, .product-description h4 {
+    margin: 10px 0;
+}
+
+
+.product-description button {
+    background: grey;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+
+.product-description button:hover {
+    box-shadow: 10px 10px 15px grey;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.newsletter {
+    background-image: url("Images/newsletter.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+
+}
+
+.newsletter h1 {
+    color: lightgrey;
+}
+
+.newsletter-text {
+    width: 50%;
+    text-align: center;
+    margin: 40px 0;
+}
+
+.newsletter-input {
+    width: 40%;
+}
+
+.newsletter-input input {
+    font-size: 30px;
+    border-radius: 10px;
+}
+
+#newsletter-email {
+    border: 5px solid mediumpurple;
+    outline: none;
+    width: auto;
+    min-width: 450px;
+}
+
+#newsletter-submit {
+    width: 150px;
+    border: 5px solid hotpink;
+    background-color: hotpink;
+    cursor: pointer;
+    transition: color 0.5s;
+}
+
+#newsletter-submit:hover {
+    color: mediumvioletred;
+}
+
+.newsletter-input form {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    background: grey;
+    vertical-align: top;
+    position: absolute;
+    width: 100%;
+}
+
+.footer li {
+    list-style: none;
+}
+
+.footer ul {
+    padding: 0;
+}
+
+.footer h4 {
+    margin-bottom: 15px;
+}
+
+.inner-footer {
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.inner-footer li {
+    display: flex;
+    align-items: center;
+}
+
+.inner-footer a {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s;
+}
+
+.inner-footer a:hover, .inner-footer a.active {
+    color: lightgrey;
+}
+
+.follow-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+/** SHOP PAGE **/
+.page-header {
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-weight: bold;
+    padding: 5%;
+    text-align: center;
+}
+
+#shop-header {
+    background-image: url("Images/shop.jpg");
+    color: lawngreen;
+}
+
+.page-header h1 {
+    margin-top: 7%;
+}
+
+.shop-searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 75px;
+    padding: 25px 0;
+    background-color: darkslategrey;
+    margin-bottom: 50px;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    border: none;
+    padding: 5px;
+    width: 0;
+    transition: width 0.5s;
+}
+
+.shop-searchbar label {
+    width: 100%;
+}
+
+.shop-searchbar input {
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    width: 0;
+    border-radius: 25px;
+    outline: none;
+}
+
+.search-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+}
+
+.shop-searchbar:hover input, .shop-searchbar:focus input {
+    width: 100%;
+}
+
+.shop-searchbar:hover .searchbar {
+    border: 3px solid slategrey;
+    justify-content: flex-start;
+    width: 40%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+    width: 300px;
+    left: -250px;
+    transform: translate(0, -50%);
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-icon {
+    background-color: dimgrey;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.sidebar-icon:hover {
+    cursor: pointer;
+}
+
+.sidebar-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+.filter-container {
+    background-color: dimgrey;
+    padding: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.product-filter {
+    list-style: none;
+    padding: 0;
+}
+
+.product-filter input, .product-filter button {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.product-filter input {
+    padding: 10px;
+    outline: none;
+    background: darkgrey;
+    width: 50%;
+    border-radius: 20px;
+    border: 2px solid black;
+}
+
+.product-filter button {
+    background: transparent;
+    border: none;
+    transition: color 0.5s;
+}
+
+.product-filter button:hover {
+    color: slategrey;
+    cursor: pointer;
+}
+
+.product-sorter {
+    text-decoration: none;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+}
+
+.product-sorter li {
+    padding: 0 1%;
+}
+
+.product-sorter button {
+    background: transparent;
+    border: none;
+    transition: color 0.5s;
+}
+
+.product-sorter button:hover {
+    cursor: pointer;
+    color: slategrey;
+}
+
+
+/*  ABOUT.html   */
+#about-header {
+    background-image: url("Images/about.jpg");
+    color: deeppink;
+}
+
+.about {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 0 30%;
+}
+
+.about h1 {
+    color: darkslategrey;
+}
+
+.about2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.highlights {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.highlights h1 {
+    color: darkslategrey;
+}
+
+.highlight {
+    display: flex;
+    justify-content: flex-start;
+    background-color: dimgrey;
+    border-radius: 50px;
+    margin: 25px 0;
+    width: 55%;
+    height: 20%;
+    transition: 0.5s ease;
+}
+
+.highlight img {
+    max-height: 205px;
+    height: 100%;
+    max-width: 200px;
+    width: 100%;
+    border-radius: 50px;
+    padding: 30px;
+    background-color: darkslategrey;
+}
+
+.highlight-image {
+    min-height: 205px;
+    min-width: 200px;
+}
+
+.highlight h1 {
+    margin-top: 0;
+}
+
+.highlight p {
+    margin-bottom: 0;
+}
+
+.highlight-info {
+    text-align: left;
+    padding: 20px;
+}
+
+.highlight:hover {
+    box-shadow: 10px 10px 10px grey;
+}
+
+/* CONTACT */
+
+#contact-header {
+    background-image: url("Images/contact.jpg");
+    color: orangered;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-info {
+    display: flex;
+}
+
+.info, .map {
+    padding: 25px 20px;
+}
+
+.map-window {
+    border-radius: 20px;
+}
+
+.info {
+    text-align: right;
+    padding-top: 0;
+}
+
+.info h1 {
+    vertical-align: top;
+}
+
+.info ul {
+    padding: 0;
+}
+
+.info li {
+    list-style: none;
+}
+
+.social-sites {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+
+}
+
+.social-sites a {
+    text-decoration: none;
+}
+
+.site .text {
+    display: none;
+}
+
+.site {
+    border-radius: 100px;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px 25px;
+    text-align: center;
+    transition: width 0.5s;
+    overflow: hidden;
+}
+
+.site img {
+    padding: 10px;
+}
+
+.text {
+    text-align: center;
+    margin-left: 20px;
+    font-size: 35px;
+}
+
+.icon {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+}
+
+
+.site:hover {
+    width: 500px;
+    justify-content: flex-start;
+}
+
+.site:hover .text {
+    display: flex;
+}
+
+#facebook:hover .icon {
+    background-color: rgba(8, 102, 255);
+}
+
+#facebook:hover .text {
+    color: rgba(8, 102, 255);
+
+}
+
+#instagram:hover .text {
+    color: #ee2a7b;
+}
+
+#instagram:hover .icon {
+    background: linear-gradient(to right, #f9ce34, #ee2a7b, #6228d7);
+}
+
+#twitter:hover .text {
+    color: rgba(0, 174, 239);
+}
+
+#twitter:hover .icon {
+    background-color: rgba(0, 174, 239);
+}
+
+#youtube:hover .text {
+    color: red;
+}
+
+#youtube:hover .icon {
+    background-color: red;
+}
+
+.contact-message {
+    justify-content: center;
+    margin-top: 50px;
+    background-image: url("Images/contact-us.jpg");
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    color: orangered;
+}
+
+.contact-message input, .contact-message textarea {
+    width: 700px;
+    outline: none;
+    border-radius: 10px;
+    border: 5px solid orangered;
+    background-color: transparent;
+}
+
+.contact-message input:focus, .contact-message textarea:focus {
+    background-color: darkorange;
+}
+
+#contact-submit {
+    width: 150px;
+}
+
+#contact-submit:hover {
+    background-color: darkorange;
+}
+
+.contact-message form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-message form input, .contact-message textarea {
+    font-size: 25px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+
+/** Login Page and Registration Page **/
+.login, .registration {
+    width: 40%;
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+    border: 3px solid black;
+    border-radius: 50px;
+    background-color: transparent;
+}
+
+.login {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.registration {
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0);
+    width: 50%;
+}
+
+#myVideo {
+    min-width: 100%;
+    min-height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+}
+
+.login-header, .registration-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-header a , .registration-header a {
+    text-decoration: none;
+    color: black;
+}
+
+.login-header img, .registration-header img {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
+.login-input, .registration-input {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.login-input input, .registration-input input {
+    width: 100%;
+    font-size: 25px;
+    margin-bottom: 30px;
+    border: 3px solid black;
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+}
+
+.registration-input  {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.login-input a, .registration-input a {
+    color: black;
+    transition: color 0.5s;
+}
+
+.login-input h4, .registration-input h4 {
+    margin-bottom: 0;
+}
+
+.login-input a:hover, .registration-input a:hover {
+    color: lightslategrey;
+}
+
+.login-input input:focus, .registration-input input:focus {
+    background-color: lightgrey;
+}
+
+#login-submit, #registration-submit {
+    width: 125px;
+    margin: 20px auto 20px;
+    background: transparent;
+    transition: background-color 0.5s;
+}
+
+#login-submit:hover, #registration-submit:hover {
+    background-color: lightgrey;
+}
+
+#remember-input, #privacy-policy-input {
+    margin: 0;
+    width: 25px;
+}
+
+/** PRIVACY POLICY, TERMS AND CONDITIONS **/
+.privacy-policy, .terms-and-conditions {
+    padding: 100px 50px;
+    text-align: justify;
+}
+
+
+/* MEDIA */
+@media  (max-width: 1650px)
+{
+    .login {
+        width: 60%;
+    }
+
+    .registration {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1400px)
+{
+    .social-sites {
+        flex-direction: column;
+    }
+
+    .highlight {
+        width: 100%;
+    }
+
+    .about {
+        padding: 0 25%;
+    }
+}
+
+@media  (max-width: 1200px)
+{
+    .login {
+        width: 70%;
+    }
+
+    .shop-searchbar input {
+        width: 100%;
+    }
+
+    .searchbar {
+        border: 3px solid slategrey;
+        justify-content: flex-start;
+        width: 40%;
+    }
+}
+
+@media (max-width: 999px)
+{
+    /* HOME PAGE */
+    .navbar {
+        padding: 22px 50px;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 0;
+        margin: 0;
+        right: -305px;
+        width: 300px;
+        height: 100vh;
+        background: slategrey;
+        padding-top: 100px;
+        transition: 0.5s;
+        box-shadow: 0 0 5px black;
+    }
+
+    .menu.active {
+        right: 0;
+    }
+
+    .menu li {
+        padding-bottom: 40px;
+    }
+
+    .mobile {
+        display: flex;
+    }
+
+    .close-image {
+        display: flex;
+        position: absolute;
+        top: 40px;
+        left: 70px;
+    }
+
+    .banner h1{
+        padding-left: 50px;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .newsletter-text {
+        margin: 0;
+        width: 100%;
+    }
+
+    .newsletter-input form {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 50px;
+    }
+
+    .newsletter-input input {
+        margin-bottom: 25px;
+    }
+
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .inner-footer li {
+        justify-content: center;
+    }
+
+    /** SHOP PAGE **/
+    .page-header h1 {
+        margin-top: 15%;
+    }
+
+    .searchbar {
+        width: 90%;
+    }
+
+    .shop-searchbar:hover .searchbar {
+        width: 90%;
+    }
+
+
+    /* ABOUT PAGE */
+    .about {
+        padding: 0 20%;
+    }
+
+    .highlight {
+        border-radius: 25px;
+    }
+
+    .highlight img {
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+    .highlight-info h2 {
+        margin: 0;
+    }
+
+    /* CONTACT PAGE */
+    .contact-info {
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    .text {
+        font-size: 25px;
+    }
+
+    .site {
+        border-radius: 75px;
+        width: 150px;
+        height: 150px;
+        margin: 25px 25px;
+
+    }
+
+    .icon {
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+    }
+
+    .site:hover {
+        width: 400px;
+    }
+
+    .contact-message input, .contact-message textarea {
+        width: 500px;
+    }
+
+    /** LOGIN PAGE AND REGISTRATION PAGE **/
+    .registration {
+        width: 90%;
+    }
+
+    .login-input, .registration-input {
+        font-size: 20px;
+    }
+
+    .login-input input, .registration-input input {
+        font-size: 20px;
+    }
+
+    .login {
+        width: 90%;
+
+    }
+}
+
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    h4 {
+        font-size: 15px;
+    }
+
+    button {
+        font-size: 15px;
+    }
+
+    .navbar {
+        padding: 10px 25px;
+    }
+
+    /* HOME PAGE */
+    .news1, .news2, .news3, .news4, .news5 {
+        padding: 50px 25px;
+    }
+
+    .prev, .next {
+        padding: 20px 10px;
+    }
+
+    .banner {
+        height: 300px;
+        padding: 0 25px;
+    }
+
+    .banner h1 {
+        padding-left: 0;
+    }
+
+    .product-description img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .bestseller {
+        width: 250px;
+        height: 250px;
+    }
+
+    .newsletter-input input {
+        font-size: 15px;
+    }
+
+    .newsletter-input form {
+        margin-bottom: 0;
+    }
+
+    #newsletter-submit {
+        max-width: 100px;
+    }
+
+    #newsletter-email {
+        min-width: 250px;
+    }
+
+    /** SHOP PAGE **/
+    .page-header h1 {
+        margin-top: 25%;
+    }
+
+    .shop-searchbar input {
+        font-size: 20px;
+    }
+
+    .search-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .product-filter input, .product-filter button {
+        margin-bottom: 10px;
+        font-size: 15px;
+    }
+
+    /* ABOUT PAGE */
+    .about {
+        padding: 0;
+    }
+
+    .highlight-info {
+        padding: 5px;
+    }
+
+    .highlight-info p {
+        margin: 0;
+    }
+
+    .highlight-image {
+        min-width: 100px;
+        min-height: 100px;
+    }
+
+    /* CONTACT PAGE */
+    .map-window {
+        width: 300px;
+        height: 250px;
+    }
+
+    .map {
+        padding-top: 0;
+    }
+
+    .info {
+        text-align: center;
+    }
+
+    .contact-message h1{
+        padding: 0 5px;
+    }
+    .contact-message input, .contact-message textarea {
+        width: 450px;
+    }
+
+    .contact-message form input, .contact-message textarea {
+        font-size: 20px;
+    }
+
+    /* LOGIN PAGE AND REGISTRATION PAGE */
+    .login, .registration {
+        border-radius: 25px;
+    }
+
+    .login-header img, .registration-header img {
+        width: 50px;
+        height: 50px;
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .text {
+        font-size: 20px;
+    }
+
+    .site {
+        border-radius: 62px;
+        width: 100px;
+        height: 100px;
+        margin: 25px 25px;
+
+    }
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        border-radius: 62px;
+    }
+
+    .site:hover {
+        width: 300px;
+    }
+
+    .contact-message input, .contact-message textarea {
+        width: 350px;
+    }
+
+    /* LOGIN PAGE AND REGISTRATION PAGE */
+    .login-header h1, .registration-header h1 {
+        font-size: 30px;
+    }
+
+    .login-header img, .registration-header img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .login-input, .registration-input {
+        font-size: 15px;
+    }
+
+    .login-input input, .registration-input input {
+        font-size: 15px;
+    }
+
+}
+
+@media (max-width: 300px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    h3 {
+        font-size: 15px;
+    }
+
+    h4 {
+        font-size: 10px;
+    }
+
+    /*HOME PAGE*/
+    .prev, .next {
+        font-size: 11px
+    }
+
+    .bestseller {
+        width: 150px;
+        height: 150px;
+    }
+
+    /* SHOP PAGE*/
+    .sidebar.active {
+        left: -50px;
+    }
+
+    .sidebar {
+        text-align: right;
+    }
+
+    .product-sorter li {
+        padding: 0 0.5%;
+    }
+
+    /* CONTACT PAGE */
+    .map-window {
+        width: 200px;
+        height: 150px;
+    }
+
+    .text {
+        font-size: 15px;
+    }
+
+    .site {
+        border-radius: 50px;
+        width: 75px;
+        height: 75px;
+        margin: 25px 25px;
+
+    }
+
+    .icon {
+        width: 75px;
+        height: 75px;
+        border-radius: 50px;
+    }
+
+    .site:hover {
+        width: 250px;
+    }
+
+    .contact-message input, .contact-message textarea {
+        width: 250px;
+    }
+
+    .contact-message form input, .contact-message textarea {
+        font-size: 15px;
+    }
+
+    #contact-submit {
+        width: 100px;
+    }
+
+    /** LOGIN PAGE AND REGISTRATION PAGE**/
+    .login-header h1, .registration-header h1 {
+        font-size: 25px;
+    }
+
+    #login-submit, #registration-submit {
+        width: 100px;
+    }
+
+}

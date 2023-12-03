@@ -1,6 +1,7 @@
 package com.SemestralnaPraca.GamingGround.controller;
 
 import com.SemestralnaPraca.GamingGround.entity.User;
+import com.SemestralnaPraca.GamingGround.request.UserRegisterRequest;
 import com.SemestralnaPraca.GamingGround.request.UserSaveRequest;
 import com.SemestralnaPraca.GamingGround.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
@@ -34,4 +35,6 @@ public class UserController {
         userService.updateUser(id);
     }
 
+    @PostMapping("/register")
+    public void registerUser(@RequestBody UserRegisterRequest request) { userService.registerUser(request); }
 }

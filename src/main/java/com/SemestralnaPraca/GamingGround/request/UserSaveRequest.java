@@ -11,6 +11,7 @@ public class UserSaveRequest {
     private String name;
     private String surname;
     private String email;
+    private String password;
     private String phoneNumber;
-    private OffsetDateTime dateOfBirth;
+  //  private OffsetDateTime dateOfBirth;
 }
