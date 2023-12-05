@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Ground | Checkpoint</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="checkpoint">
+
+    <div class="get">
+        <form>
+            <label for="email"><b>E-mail:</b></label>
+            <input type="text" id="email" name="email" placeholder="e-mail of user" required>
+
+            <input id="get-submit" type="submit" value="GET" onclick="return getUser()">
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone Number</th>
+                    <th>Date of birth</th>
+                </tr>
+            </thead>
+            <tbody id="userData"></tbody>
+        </table>
+    </div>
+
+    <div class="delete">
+        <form>
+            <label for="email2"><b>E-mail:</b></label>
+            <input type="text" id="email2" name="email" placeholder="e-mail of user" required>
+
+            <input id="delete-submit" type="submit" value="DELETE" onclick="return deleteUser()">
+        </form>
+
+    </div>
+
+    <div class="delete">
+        <form>
+            <label for="email3"><b>E-mail:</b></label>
+            <input type="text" id="email3" name="email" placeholder="e-mail of user" required>
+
+            <label for="attribute">Attribute:</label>
+            <input type="text" id="attribute" name="attribute" placeholder="attribute" required>
+
+            <label for="value">Value:</label>
+            <input type="text" id="value" name="value" placeholder="value" required>
+
+            <input id="update-submit" type="submit" value="UPDATE" onclick="return updateUser()">
+        </form>
+
+    </div>
+</div>
+<script th:src="@{/getUser.js}"></script>
+<script th:src="@{/deleteUser.js}"></script>
+<script th:src="@{/updateUser.js}"></script>
+</body>
+</html>

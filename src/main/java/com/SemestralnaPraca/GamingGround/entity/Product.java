@@ -20,6 +20,4 @@ public class Product {
     private String productTitle;
     private String description;
     private double price;
-
-//  private Img productImage;
 }

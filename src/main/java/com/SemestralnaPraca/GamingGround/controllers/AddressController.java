@@ -1,4 +1,4 @@
-package com.SemestralnaPraca.GamingGround.controller;
+package com.SemestralnaPraca.GamingGround.controllers;
 
 
 import com.SemestralnaPraca.GamingGround.service.AddressService;

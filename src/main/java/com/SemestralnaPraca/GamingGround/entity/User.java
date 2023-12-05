@@ -1,14 +1,14 @@
 package com.SemestralnaPraca.GamingGround.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.UUID;
 import java.util.List;
 
 @Entity
@@ -20,16 +20,16 @@ import java.util.List;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @Column(name = "email")
+    private String email;
 
     private String name;
     private String surname;
-    private String email;
     private String password;
     private String phoneNumber;
- //   private OffsetDateTime dateOfBirth;
+    private LocalDate dateOfBirth;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Address> addresses = new ArrayList<>();
 }

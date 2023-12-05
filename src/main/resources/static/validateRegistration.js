@@ -5,6 +5,7 @@ function validateRegistration() {
     var name = document.getElementById("name").value;
     var surname = document.getElementById("surname").value;
     var telephone = document.getElementById("telephone").value;
+    var dateOfBirth = document.getElementById("dateOfBirth").value;
     var street = document.getElementById("street").value;
     var number = document.getElementById("number").value;
     var code = document.getElementById("code").value;
@@ -34,6 +35,10 @@ function validateRegistration() {
         alert("Telephone number is required.");
         return;
     }
+    if (dateOfBirth === "") {
+        alert("Date of birth is required.");
+        return;
+    }
     if (street === "") {
         alert("Street is required.");
         return;
@@ -56,8 +61,8 @@ function validateRegistration() {
         return;
     }
 
-    var emailPattern = /[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
+    var emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
         alert("Invalid email address.");
         return;
     }
@@ -67,14 +72,41 @@ function validateRegistration() {
         return;
     }
 
-    var phonePattern = /^\+[0-9]{1,12}$/;
-    if (!phonePattern.test(telephone)) {
+    var dateOfBirthRegex = /^(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[0-2])\.\d{4}$/;
+    if (!dateOfBirthRegex.test(dateOfBirth)) {
+        alert("Date of birth is in the wrong format.");
+        return;
+    }
+
+    var parts = dateOfBirth.split(".");
+    var day = parseInt(parts[0], 10);
+    var month = parseInt(parts[1], 10);
+    var year = parseInt(parts[2], 10);
+
+    var date = new Date(year, month - 1, day);
+    if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
+        alert("The specified date does not exist.");
+        return;
+    }
+
+    var currentDate = new Date();
+
+    var timeDiff = currentDate - date; // in millis
+    var age = Math.floor(timeDiff / (365.25 * 24 * 60 * 60 * 1000));
+
+    if (age < 15) {
+        alert("User is not older than 15 years.");
+        return;
+    }
+
+    var phoneRegex = /^\+[0-9]{1,12}$/;
+    if (!phoneRegex.test(telephone)) {
         alert("Telephone number is in the wrong format.");
         return;
     }
 
-    var zipCodePattern = /^\d{3} \d{2}$/;
-    if (!zipCodePattern.test(code)) {
+    var zipCodeRegex = /^\d{3} \d{2}$/;
+    if (!zipCodeRegex.test(code)) {
         alert("ZIP Code is in the wrong format.");
         return;
     }
@@ -85,13 +117,14 @@ function validateRegistration() {
         name: name,
         surname: surname,
         phoneNumber: telephone,
+        dateOfBirth: dateOfBirth,
         street: street,
         number: number,
         zipcode: code,
         country: country
     };
 
-    fetch('/api/user/register', {
+    fetch('/api/user/save', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
