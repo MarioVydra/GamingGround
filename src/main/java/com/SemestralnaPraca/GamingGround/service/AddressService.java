@@ -11,9 +11,9 @@ import java.util.UUID;
 public class AddressService {
     private final AddressRepository addressRepository;
 
-    public void deleteProduct(UUID id) {
+    public void deleteAddress(UUID id) {
         if (!addressRepository.existsById(id)) {
-            throw new RuntimeException("Product does not exists!");
+            throw new RuntimeException("Address does not exists!");
         } else {
             addressRepository.deleteById(id);
         }

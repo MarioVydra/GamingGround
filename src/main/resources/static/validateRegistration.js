@@ -124,18 +124,21 @@ function validateRegistration() {
         country: country
     };
 
-    fetch('/api/user/save', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(registrationData),
-    })
-        .then(response => response.text())
-        .then(data => {
-            console.log(data);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+    var request = new XMLHttpRequest();
+    request.open("POST", "/api/user/save", true);
+    request.setRequestHeader("Content-Type", "application/json");
+
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                console.log("Server response:", request.responseText);
+                alert("Registration was successful!");
+            } else {
+                console.error("Error:", request.status, request.statusText);
+                alert("Registration failed. Status code: " + request.status);
+            }
+        }
+    };
+
+    request.send(JSON.stringify(registrationData));
 }

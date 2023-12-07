@@ -5,6 +5,7 @@ import com.SemestralnaPraca.GamingGround.entity.User;
 import com.SemestralnaPraca.GamingGround.repository.UserRepository;
 import com.SemestralnaPraca.GamingGround.request.UserSaveRequest;
 import com.SemestralnaPraca.GamingGround.request.UserUpdateRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,10 @@ public class UserService {
     }
 
     public String saveUser(UserSaveRequest request) {
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email is already registered.");
+        }
+
         User user = new User();
         user.setName(request.getName());
         user.setSurname(request.getSurname());
@@ -41,7 +46,7 @@ public class UserService {
             date = LocalDate.parse(dateString, formatter);
             user.setDateOfBirth(date);
         } catch (DateTimeParseException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Invalid date format. Expected format: dd.MM.yyyy (actual input: " + dateString + ")");
         }
 
         Address address = new Address();
@@ -56,6 +61,7 @@ public class UserService {
         return userRepository.save(user).getEmail();
     }
 
+    @Transactional
     public void deleteUser(String email) {
         if (!userRepository.existsByEmail(email)) {
             throw new RuntimeException("User does not exists!");
@@ -87,7 +93,7 @@ public class UserService {
                     break;
                 case "dateofbirth":
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
-                    LocalDate date = LocalDate.parse(value);
+                    LocalDate date = LocalDate.parse(value, formatter);
                     user.setDateOfBirth(date);
                     break;
                 case "phonenumber":

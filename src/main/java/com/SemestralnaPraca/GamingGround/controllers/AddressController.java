@@ -13,7 +13,7 @@ import java.util.UUID;
 public class AddressController {
     private final AddressService addressService;
     @DeleteMapping("/delete/{id}")
-    public void deleteProduct(@PathVariable UUID id) {
-        addressService.deleteProduct(id);
+    public void deleteAddress(@PathVariable UUID id) {
+        addressService.deleteAddress(id);
     }
 }
