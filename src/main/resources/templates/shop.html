@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Ground | Shop</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{#}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+    <ul class="menu">
+        <li><a href="index.html">HOME</a></li>
+        <li><a class="active" th:href="@{#}">SHOP</a></li>
+        <li><a href="about.html">ABOUT</a></li>
+        <li><a href="contact.html">CONTACT</a></li>
+        <li><a href=""><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+        <li><a href="login.html"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
+        <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
+    </ul>
+
+    <div class="mobile">
+        <img class="hamburger-image" th:src="@{/Images/hamburger.png}" alt="Menu logo">
+    </div>
+</div>
+
+<div id="shop-header" class="page-header">
+    <h1>#STAYHOME</h1>
+</div>
+
+<div class="shop">
+    <div class="shop-searchbar">
+        <div class="searchbar">
+            <img class="search-icon" th:src="@{/Images/search.png}" alt="Search icon">
+            <label>
+                <input type="text" placeholder="Search...">
+            </label>
+        </div>
+    </div>
+
+    <div class="product-section">
+        <div class="sorter-container">
+            <ul class="product-sorter">
+                <li><button id="best-button">BEST</button></li>
+                <li><button id="cheap-button">CHEAP</button></li>
+                <li><button id="expensive-button">EXPENSIVE</button></li>
+                <li><button id="reviews-button">REVIEWS</button></li>
+            </ul>
+        </div>
+
+        <div id="sidebar" class="sidebar">
+            <div class="filter-container">
+                <ul class="product-filter">
+                    <li><h4>PRICE</h4></li>
+                    <li>
+                        <label>
+                            <input type="text" placeholder="From [€]">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="text" placeholder="To [€]">
+                        </label>
+                    </li>
+                    <li><h4>CATEGORIES</h4></li>
+                    <li><button id="games-button">GAMES</button></li>
+                    <li><button id="console-button">CONSOLES</button></li>
+                    <li><button id="gpu-button">GRAPHICS CARDS</button></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-icon">
+                <img th:src="@{/Images/sidebar.png}" alt="Sidebar icon">
+            </div>
+        </div>
+
+        <div class="products-container">
+            <!-- Přidat další produkty podle potřeby -->
+            <a th:href="@{/product-details}">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-ACmirage.png}" alt="AC Mirage">
+                    <div class="product-description">
+                        <h3>Assasins's Creed Mirage</h3>
+                        <div class="product-price">
+                            <h3>50€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Spiderman2.png}" alt="Spider-Man 2">
+                    <div class="product-description">
+                        <h3>Spider-Man 2</h3>
+                        <div class="product-price">
+                            <h3>70€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-AlanWake2.jpg}" alt="Alan Wake II">
+                    <div class="product-description">
+                        <h3>Alan Wake II</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <a href="#">
+                <div class="product">
+                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+                    <div class="product-description">
+                        <h3>Baldur's Gate 3</h3>
+                        <div class="product-price">
+                            <h3>60€</h3>
+                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="inner-footer">
+        <h4>FOLLOW US</h4>
+        <ul>
+            <li><a th:href="@{https://www.facebook.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/facebook.png}" alt="Facebook logo" />Gaming Ground</a></li>
+            <li><a th:href="@{https://www.instagram.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/instagram.png}" alt="Instagram logo" />@gamingground</a></li>
+            <li><a th:href="@{https://twitter.com/?lang='en'}" target="_blank"><img class="follow-logo" th:src="@{/Images/twitter.png}" alt="Twitter logo" />@gamingground</a></li>
+            <li><a th:href="@{https://www.youtube.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/youtube.png}" alt="Youtube logo" />Gaming Ground</a></li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>CONTACT</h4>
+        <ul>
+            <li>Námestie Andreja Hlinku 7B, 010 01 Žilina</li>
+            <li>gamingground@gmail.com</li>
+            <li>+421 987 543 111</li>
+            <li>Monday-Friday: 9AM to 9PM</li>
+            <li>Saturday-Sunday: 11AM to 6PM</li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>MY ACCOUNT</h4>
+        <ul>
+            <li><a th:href="@{/login.html}">Sign in</a></li>
+            <li><a href="">View cart</a></li>
+            <li><a href="">My wishlist</a></li>
+            <li><a href="">Help</a></li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>COMPANY</h4>
+        <ul>
+            <li><a th:href="@{/about.html}">About us</a></li>
+            <li><a th:href="@{/contact.html}">Contact</a></li>
+            <li><a th:href="@{/privacy-policy.html}">Privacy policy</a></li>
+            <li><a th:href="@{/terms-and-conditions.html}">Terms & conditions</a></li>
+        </ul>
+    </div>
+</div>
+
+<script th:src="@{/script.js}"></script>
+</body>
+</html>

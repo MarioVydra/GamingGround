@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Ground</title>
+  <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="navbar">
+  <a th:href="@{#}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+  <ul class="menu">
+    <li><a class="active" th:href="@{#}">HOME</a></li>
+    <li><a th:href="@{/shop.html}">SHOP</a></li>
+    <li><a th:href="@{/about.html}">ABOUT</a></li>
+    <li><a th:href="@{/contact.html}">CONTACT</a></li>
+    <li><a href=""><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+    <li><a th:href="@{/login.html}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
+    <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
+  </ul>
+
+  <div class="mobile">
+    <img class="hamburger-image" th:src="@{/Images/hamburger.png}" alt="Menu logo">
+  </div>
+</div>
+
+<div class="slideshow">
+  <div class="slides fade">
+    <div class="news1">
+      <h1>Get ready your wallets!</h1>
+      <h3>The new series of RTX graphic cards is here.</h3>
+      <h2>Stronger than ever.</h2>
+      <a href="#"><h4><button>BUY NOW</button></h4></a>
+    </div>
+  </div>
+
+  <div class="slides fade">
+    <div class="news3">
+      <h1>Avatar: Frontiers of Pandora</h1>
+      <h2>Coming soon.</h2>
+      <a href="#"><h4><button>PREORDER NOW</button></h4></a>
+    </div>
+  </div>
+
+  <div class="slides fade">
+    <div class="news4">
+      <h1>New versions of PS5 are here!</h1>
+      <h3>Slimmer than ever.</h3>
+      <h2>Grab it ASAP.</h2>
+      <a href="#"><h4><button>BUY NOW</button></h4></a>
+    </div>
+  </div>
+
+  <div class="slides fade">
+    <div class="news5">
+      <h1>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h1>
+      <h2>Expected release Q1 2024.</h2>
+      <a href="#"><h4><button>PREORDER NOW</button></h4></a>
+    </div>
+  </div>
+
+  <div class="slides fade">
+    <div class="news2">
+      <h1>Assassin's Creed Mirage</h1>
+      <h3>The time of the assassins has come!</h3>
+      <h2>Join Basim's journey and discover medieval Baghdad.</h2>
+      <a href="#"><h4><button>BUY NOW</button></h4></a>
+    </div>
+  </div>
+
+  <a class="prev" onclick="plusSlides(-1)">❮</a>
+  <a class="next" onclick="plusSlides(1)">❯</a>
+
+  <div class="dots">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+  </div>
+</div>
+
+<div id="banner1" class="banner">
+  <h1>Use free shipping until the end of the year.</h1>
+  <a th:href="@{/shop.html}"><button>Shop now</button></a>
+</div>
+
+<div class="bestseller-section">
+  <h1>BESTSELLERS</h1>
+  <div class="bestseller-container">
+    <a href="#" data-clicked="return false">
+      <div id="bestseller1" class="bestseller">
+        <div class="bestseller-text">
+          <h2>Bestsellers game</h2>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div id="bestseller2" class="bestseller">
+        <div class="bestseller-text">
+          <h2>Bestsellers console</h2>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div id="bestseller3" class="bestseller">
+        <div class="bestseller-text">
+          <h2>Bestsellers GPU</h2>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="product-section">
+  <h1>NEW PRODUCTS</h1>
+  <div class="products-container">
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-ACmirage.png}" alt="AC Mirage">
+        <div class="product-description">
+          <h3>Assassin's Creed Mirage</h3>
+          <div class="product-price">
+            <h3>50€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-SpiderMan2.png}" alt="Spider-Man 2">
+        <div class="product-description">
+          <h3>Spider-Man 2</h3>
+          <div class="product-price">
+            <h3>70€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-AlanWake2.jpg}" alt="Alan Wake II">
+        <div class="product-description">
+          <h3>Alan Wake II</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+        <div class="product-description">
+          <h3>Baldur's Gate 3</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+        <div class="product-description">
+          <h3>Baldur's Gate 3</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+        <div class="product-description">
+          <h3>Baldur's Gate 3</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+        <div class="product-description">
+          <h3>Baldur's Gate 3</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <a href="#">
+      <div class="product">
+        <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
+        <div class="product-description">
+          <h3>Baldur's Gate 3</h3>
+          <div class="product-price">
+            <h3>60€</h3>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+
+<div class="newsletter">
+  <div class="newsletter-text">
+    <h1>Sign up for newsletters</h1>
+  </div>
+  <div class="newsletter-input">
+    <form action="">
+      <label>
+        <input id="newsletter-email" type="text" placeholder="Your e-mail address" required>
+      </label>
+      <input id="newsletter-submit" type="submit" value="Sign up">
+    </form>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="inner-footer">
+    <h4>FOLLOW US</h4>
+    <ul>
+      <li><a th:href="@{https://www.facebook.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/facebook.png}" alt="Facebook logo">Gaming Ground</a></li>
+      <li><a th:href="@{https://www.instagram.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/instagram.png}" alt="Instagram logo">@gamingground</a></li>
+      <li><a th:href="@{https://twitter.com/?lang='en'}" target="_blank"><img class="follow-logo" th:src="@{/Images/twitter.png}" alt="Twitter logo">@gamingground</a></li>
+      <li><a th:href="@{https://www.youtube.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/youtube.png}" alt="Youtube logo">Gaming Ground</a></li>
+    </ul>
+  </div>
+
+  <div class="inner-footer">
+    <h4>CONTACT</h4>
+    <ul>
+      <li>Námestie Andreja Hlinku 7B, 010 01 Žilina</li>
+      <li>gamingground@gmail.com</li>
+      <li>+421 987 543 111</li>
+      <li>Monday-Friday: 9AM to 9PM</li>
+      <li>Saturday-Sunday: 11AM to 6PM</li>
+    </ul>
+  </div>
+
+  <div class="inner-footer">
+    <h4>MY ACCOUNT</h4>
+    <ul>
+      <li><a th:href="@{/login.html}">Sign in</a></li>
+      <li><a href="">View cart</a></li>
+      <li><a href="">My wishlist</a></li>
+      <li><a href="">Help</a></li>
+    </ul>
+  </div>
+
+  <div class="inner-footer">
+    <h4>COMPANY</h4>
+    <ul>
+      <li><a th:href="@{/about.html}">About us</a></li>
+      <li><a th:href="@{/contact.html}">Contact</a></li>
+      <li><a th:href="@{/privacy-policy.html}">Privacy policy</a></li>
+      <li><a th:href="@{/terms-and-conditions.html}">Terms & conditions</a></li>
+    </ul>
+  </div>
+</div>
+
+<script th:src="@{/script.js}"></script>
+</body>
+</html>

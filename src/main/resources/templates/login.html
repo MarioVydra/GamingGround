@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Ground | Login</title>
+  <link rel="stylesheet" th:href="@{/style.css}" />
+</head>
+<body id="login-body">
+<video autoplay muted loop id="myVideo">
+  <source th:src="@{/Images/login.mp4}" type="video/mp4">
+</video>
+
+<div class="login">
+  <form>
+    <div class="login-header">
+      <a th:href="@{/index}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+      <a th:href="@{/index}"><h1>Gaming Ground</h1></a>
+    </div>
+
+    <div class="login-input">
+      <label for="e-mail"><b>E-mail:</b></label>
+      <input type="text" id="e-mail" placeholder="Your e-mail" required>
+
+      <label for="password"><b>Password:</b></label>
+      <input type="password" id="password" placeholder="Your password" required>
+
+      <label id="remember">
+        <input type="checkbox" id="remember-input" /> <span>Remember me</span>
+      </label>
+
+      <h4><a th:href="@{/registration}">New registration</a></h4>
+
+      <input id="login-submit" type="submit" value="Submit">
+    </div>
+  </form>
+</div>
+</body>
+</html>
