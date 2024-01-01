@@ -15,52 +15,54 @@
 <div class="registration">
     <form>
         <div class="registration-header">
-            <a th:href="@{/index.html}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
-            <a th:href="@{/index.html}"><h1>Gaming Ground</h1></a>
+            <a th:href="@{/}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+            <a th:href="@{/}"><h1>Gaming Ground</h1></a>
         </div>
 
         <div class="registration-input">
-            <label for="email"><b>E-mail:</b></label>
+            <label for="email"><b>E-mail: </b><span id="email-error" class="error"></span></label>
             <input type="text" id="email" name="email" placeholder="Your e-mail" required>
 
-            <label for="password"><b>Password:</b></label>
+            <label for="password"><b>Password: </b><span id="password-error" class="error"></span></label>
             <input type="password" id="password" name="password" placeholder="Your password" required>
 
-            <label for="password-repeat"><b>Repeat password:</b></label>
-            <input type="password" id="password-repeat" name="passwordRepeat" placeholder="Repeat your password" required>
+            <label for="repeatPassword"><b>Repeat password: </b><span id="repeatPassword-error" class="error"></span></label>
+            <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repeat your password" required>
 
-            <label for="name"><b>Name:</b></label>
+            <label for="name"><b>Name: </b><span id="name-error" class="error"></span></label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
 
-            <label for="surname"><b>Surname:</b></label>
+            <label for="surname"><b>Surname: </b><span id="surname-error" class="error"></span></label>
             <input type="text" id="surname" name="surname" placeholder="Your surname" required>
 
-            <label for="telephone"><b>Your telephone number:</b></label>
-            <input type="text" id="telephone" name="telephone" placeholder="Your telephone number (e.g. +421910555798)" required>
+            <label for="phoneNumber"><b>Your telephone number: </b><span id="phoneNumber-error" class="error"></span></label>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your telephone number (e.g. +421910555798)" required>
 
-            <label for="dateOfBirth"><b>Your date of birth:</b></label>
+            <label for="dateOfBirth"><b>Your date of birth: </b><span id="dateOfBirth-error" class="error"></span></label>
             <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Your date of birth (e.g. 18.12.2001)" required>
 
-            <label for="street"><b>Your street:</b></label>
+            <label for="street"><b>Your street: </b><span id="street-error" class="error"></span></label>
             <input type="text" id="street" name="street" placeholder="Your street (e.g. Štefánikova)" required>
 
-            <label for="number"><b>Your house number:</b></label>
+            <label for="number"><b>Your house number: </b><span id="number-error" class="error"></span></label>
             <input type="text" id="number" name="number" placeholder="Your house number (e.g. 254)" required>
 
-            <label for="code"><b>Your postal code:</b></label>
-            <input type="text" id="code" name="code" placeholder="Your postal code (e.g. 098 02)" required>
+            <label for="zipcode"><b>Your postal code: </b><span id="zipcode-error" class="error"></span></label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="Your postal code (e.g. 098 02)" required>
 
-            <label for="country"><b>Your country:</b></label>
+            <label for="country"><b>Your country: </b><span id="country-error" class="error"></span></label>
             <input type="text" id="country" name="country" placeholder="Your country (e.g Slovakia)" required>
 
             <label id="privacy-policy">
-                <input type="checkbox" id="privacy-policy-input" name="privacyPolicy" required>
-                By checking this box you agree with our <a th:href="@{/privacy-policy.html.html}">Privacy policy</a> and <a th:href="@{/terms-and-conditions.html}">Terms & conditions</a>
+                <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
+                By checking this box you agree with our <a th:href="@{/privacy-policy}">Privacy policy</a> and <a th:href="@{/terms-and-conditions}">Terms & conditions</a>
+                <span id="privacyPolicy-error" class="error"></span>
             </label>
 
-            <h4><a th:href="@{/login.html}">Already registered</a></h4>
+            <h4><a th:href="@{/login}">Already registered</a></h4>
 
-            <input id="registration-submit" type="submit" value="Submit" onclick="validateRegistration()">
+            <input id="registration-submit" type="submit" value="Submit" onclick="return validateRegistration()">
+
         </div>
     </form>
 </div>

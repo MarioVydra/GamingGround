@@ -10,12 +10,12 @@
 <div class="navbar">
     <a th:href="@{#}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
     <ul class="menu">
-        <li><a href="index.html">HOME</a></li>
-        <li><a href="shop.html">SHOP</a></li>
-        <li><a href="about.html">ABOUT</a></li>
-        <li><a href="contact.html">CONTACT</a></li>
+        <li><a th:href="@{/}">HOME</a></li>
+        <li><a th:href="@{/shop}">SHOP</a></li>
+        <li><a th:href="@{/about}">ABOUT</a></li>
+        <li><a th:href="@{/contact}">CONTACT</a></li>
         <li><a href=""><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
-        <li><a href="login.html"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
+        <li><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
         <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
     </ul>
 
@@ -104,7 +104,7 @@
 
     <h2>Your Privacy</h2>
 
-    <p>Please read <a th:href="@{/privacy-policy.html}">Privacy Policy</a></p>
+    <p>Please read <a th:href="@{/privacy-policy}">Privacy Policy</a></p>
 
     <h2>Reservation of Rights</h2>
 
@@ -138,7 +138,7 @@
     <div class="inner-footer">
         <h4>MY ACCOUNT</h4>
         <ul>
-            <li><a th:href="@{/login.html}">Sign in</a></li>
+            <li><a th:href="@{/login}">Sign in</a></li>
             <li><a href="">View cart</a></li>
             <li><a href="">My wishlist</a></li>
             <li><a href="">Help</a></li>
@@ -148,9 +148,9 @@
     <div class="inner-footer">
         <h4>COMPANY</h4>
         <ul>
-            <li><a th:href="@{/about.html}">About us</a></li>
-            <li><a th:href="@{/contact.html}">Contact</a></li>
-            <li><a th:href="@{/privacy-policy.html}">Privacy policy</a></li>
+            <li><a th:href="@{/about}">About us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/privacy-policy}">Privacy policy</a></li>
             <li><a class="active" th:href="@{#}">Terms & conditions</a></li>
         </ul>
     </div>

@@ -9,14 +9,9 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.UUID;
-import java.util.zip.DataFormatException;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +24,7 @@ public class UserService {
 
     public String saveUser(UserSaveRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email is already registered.");
+            throw new RuntimeException("User with this email is already registered.");
         }
 
         User user = new User();

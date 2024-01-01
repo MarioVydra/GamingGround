@@ -914,7 +914,7 @@ h4, button {
     align-items: flex-start;
     border: 3px solid black;
     border-radius: 50px;
-    background-color: transparent;
+    background-color: #7171719e;;
 }
 
 .login {
@@ -973,6 +973,14 @@ h4, button {
     outline: none;
 }
 
+.error {
+    color: red;
+}
+
+.login-input input::placeholder, .registration-input input::placeholder {
+    color: dimgrey;
+}
+
 .registration-input  {
     width: 90%;
     margin-left: 5%;
@@ -1006,7 +1014,7 @@ h4, button {
     background-color: lightgrey;
 }
 
-#remember-input, #privacy-policy-input {
+#remember-input, #privacyPolicy {
     margin: 0;
     width: 25px;
 }

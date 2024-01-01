@@ -4,16 +4,15 @@ import com.SemestralnaPraca.GamingGround.entity.User;
 import com.SemestralnaPraca.GamingGround.request.UserSaveRequest;
 import com.SemestralnaPraca.GamingGround.request.UserUpdateRequest;
 import com.SemestralnaPraca.GamingGround.service.UserService;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.UUID;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/user")
@@ -27,9 +26,16 @@ public class UserController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<String> saveUser(@Valid @RequestBody UserSaveRequest request, BindingResult  bindingResult) {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UserSaveRequest request, BindingResult  bindingResult) {
         if (bindingResult.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Validation failed");
+            List<FieldError> errors = bindingResult.getFieldErrors();
+            List<String> errorMessages = new ArrayList<>();
+            for (FieldError error : errors) {
+                String fieldName = error.getField();
+                String errorMessage = error.getDefaultMessage();
+                errorMessages.add(fieldName + ": " + errorMessage);
+            }
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(Map.of("errors", errorMessages));
         }
 
         try {
