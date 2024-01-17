@@ -14,7 +14,7 @@
         <li><a class="active" th:href="@{#}">SHOP</a></li>
         <li><a th:href="@{/about}">ABOUT</a></li>
         <li><a th:href="@{/contact}">CONTACT</a></li>
-        <li><a href=""><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+        <li><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
         <li><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
         <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
     </ul>
@@ -364,7 +364,7 @@
         <h4>MY ACCOUNT</h4>
         <ul>
             <li><a th:href="@{/login}">Sign in</a></li>
-            <li><a href="">View cart</a></li>
+            <li><a th:href="@{/cart}">View cart</a></li>
             <li><a href="">My wishlist</a></li>
             <li><a href="">Help</a></li>
         </ul>
