@@ -14,8 +14,16 @@
         <li><a th:href="@{/shop}">SHOP</a></li>
         <li><a class="active" th:href="@{#}">ABOUT</a></li>
         <li><a th:href="@{/contact}">CONTACT</a></li>
-        <li><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
-        <li><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+        <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span>LOG IN</span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span th:text="${username}"></span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a><span onclick="logoutUser()">LOG OUT</span></a></li>
         <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
     </ul>
 
@@ -120,8 +128,9 @@
     <div class="inner-footer">
         <h4>MY ACCOUNT</h4>
         <ul>
-            <li><a th:href="@{/login}">Sign in</a></li>
-            <li><a th:href="@{/cart}">View cart</a></li>
+            <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}">My profile</a></li>
+            <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}">Sign in</a></li>
+            <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}">View cart</a></li>
             <li><a href="">My wishlist</a></li>
             <li><a href="">Help</a></li>
         </ul>

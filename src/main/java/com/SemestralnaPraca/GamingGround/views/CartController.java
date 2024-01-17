@@ -7,13 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.text.AttributedString;
-
 @Controller
-public class IndexController {
-
-    @GetMapping("/")
-    public String loadIndex(Model model) {
+public class CartController {
+    @GetMapping("/cart")
+    public String loadCart(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         boolean isAuthenticated = (authentication != null &&
@@ -24,6 +21,8 @@ public class IndexController {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
         String substring = email.contains("@") ? email.substring(0, email.indexOf("@")) : email;
         model.addAttribute("username",  substring.toUpperCase());
-        return "index";
+
+        model.addAttribute("email",  email);
+        return "cart";
     }
 }

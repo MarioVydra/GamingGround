@@ -25,7 +25,7 @@ public class ProductController {
     @PostMapping("/save")
     public ResponseEntity<String> saveProduct(@RequestBody ProductSaveRequest request) {
         try {
-            UUID id =  productService.saveProduct(request);;
+            UUID id =  productService.saveProduct(request);
             return ResponseEntity.ok().build();
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

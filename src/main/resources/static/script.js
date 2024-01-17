@@ -1,5 +1,4 @@
 /** NAVBAR **/
-
 const hamburgerIcon = document.querySelector('.hamburger-image');
 const menu = document.querySelector('.menu');
 const closeIcon = document.querySelector('.close-image');
@@ -146,5 +145,19 @@ function showSlides(n) {
     timeout = setTimeout(() => {
         plusSlides(1)
     }, 10000);
+}
+
+function logoutUser() {
+    const request = new XMLHttpRequest();
+    request.open("POST", "/api/user/logout", true);
+    request.onreadystatechange = function() {
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200)
+        {
+            alert("Log out was successful! Redirecting...");
+            window.location.href = '/';
+        }
+    };
+
+    request.send();
 }
 

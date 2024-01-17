@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,16 @@
         <li><a th:href="@{/shop}">SHOP</a></li>
         <li><a th:href="@{/about}">ABOUT</a></li>
         <li><a th:href="@{/contact}">CONTACT</a></li>
-        <li><a th:href="@{#}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
-        <li><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo"></a></li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{#}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+        <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span>LOG IN</span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span th:text="${username}"></span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a><span onclick="logoutUser()">LOG OUT</span></a></li>
         <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
     </ul>
 
@@ -25,7 +33,7 @@
 </div>
 
 <div id="cart-header" class="page-header">
-    <h1>#WALLETGONNACRY</h1>
+    <h1 id="accountEmail" th:text="${email}"></h1>
 </div>
 
 <div class="itemList">
@@ -118,8 +126,9 @@
     <div class="inner-footer">
         <h4>MY ACCOUNT</h4>
         <ul>
-            <li><a th:href="@{/login}">Sign in</a></li>
-            <li><a th:href="@{#}">View cart</a></li>
+            <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}">My profile</a></li>
+            <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}">Sign in</a></li>
+            <li th:if="${isActuallyAuthenticated}"><a class="active" th:href="@{#}">View cart</a></li>
             <li><a href="">My wishlist</a></li>
             <li><a href="">Help</a></li>
         </ul>
@@ -136,5 +145,7 @@
     </div>
 </div>
 
+<script  th:src="@{/getInfo.js}"></script>
+<script  th:src="@{/script.js}"></script>
 </body>
 </html>

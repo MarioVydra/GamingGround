@@ -1,12 +1,20 @@
 package com.SemestralnaPraca.GamingGround.service;
 
+import com.SemestralnaPraca.GamingGround.config.JwtUtil;
 import com.SemestralnaPraca.GamingGround.entity.Address;
 import com.SemestralnaPraca.GamingGround.entity.User;
 import com.SemestralnaPraca.GamingGround.repository.UserRepository;
+import com.SemestralnaPraca.GamingGround.request.UserLoginRequest;
 import com.SemestralnaPraca.GamingGround.request.UserSaveRequest;
 import com.SemestralnaPraca.GamingGround.request.UserUpdateRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -17,6 +25,8 @@ import java.time.format.DateTimeParseException;
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+    private final AuthenticationManager authenticationManager;
 
     public User getUser(String email) {
         return userRepository.findUserByEmail(email);
@@ -31,7 +41,10 @@ public class UserService {
         user.setName(request.getName());
         user.setSurname(request.getSurname());
         user.setEmail(request.getEmail());
-        user.setPassword(request.getPassword());
+
+        String hashedPassword = passwordEncoder.encode(request.getPassword());
+        user.setPassword(hashedPassword);
+
         user.setPhoneNumber(request.getPhoneNumber());
 
         String dateString = request.getDateOfBirth();
@@ -41,7 +54,7 @@ public class UserService {
             date = LocalDate.parse(dateString, formatter);
             user.setDateOfBirth(date);
         } catch (DateTimeParseException e) {
-            throw new RuntimeException("Invalid date format. Expected format: dd.MM.yyyy (actual input: " + dateString + ")");
+            throw new RuntimeException("Invalid date format. Expected format: dd.MM.yyyy");
         }
 
         Address address = new Address();
@@ -98,7 +111,15 @@ public class UserService {
                     throw new IllegalArgumentException("Invalid attribute " + attribute);
             }
             userRepository.save(user);
-
         }
+    }
+
+    public String loginUser(UserLoginRequest request) {
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+        );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        System.out.println(SecurityContextHolder.getContext().getAuthentication());
+        return JwtUtil.generateToken(request.getEmail());
     }
 }

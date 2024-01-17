@@ -28,7 +28,7 @@ function validateRegistration() {
         if (element) {
             element.style.borderColor = "black";
         }
-        if (input.id !== "repeatPassword" || input.id !== "privacyPolicy") {
+        if (input.id !== "repeatPassword" && input.id !== "privacyPolicy") {
             elements.push(element);
         }
 
@@ -93,8 +93,8 @@ function validateRegistration() {
             }
         }
     }
-    /*
-    const email = document.getElementById("email");
+
+    /*const email = document.getElementById("email");
     const password = document.getElementById("password");
     const passwordRepeat = document.getElementById("repeatPassword");
     const name = document.getElementById("name");
@@ -180,7 +180,7 @@ function validateRegistration() {
     }*/
 
     if (invalidInput) {
-        return false;
+       return false;
     }
 
     const registrationData = {
@@ -196,41 +196,125 @@ function validateRegistration() {
         country: elements[9].value
     };
 
-    const request = new XMLHttpRequest();
-    request.open("POST", "/api/user/save", true);
-    request.setRequestHeader("Content-Type", "application/json");
+    const requestRegister = new XMLHttpRequest();
+    requestRegister.open("POST", "/api/user/save", true);
+    requestRegister.setRequestHeader("Content-Type", "application/json");
 
-    request.onreadystatechange = function () {
-        if (request.readyState === 4) {
-            if (request.status === 200) {
-                console.log("Server response:", request.responseText);
+    requestRegister.onreadystatechange = function () {
+        if (requestRegister.readyState === 4) {
+            if (requestRegister.status === 200) {
+                console.log("Server response:", requestRegister.responseText);
                 alert("Registration was successful!");
-                window.location.href = "/";
-            } else if (request.status === 400) {
-                console.log(request.responseText);
-                if (isJSON(request.responseText)) {
-                    let errors = JSON.parse(request.responseText);
+                window.location.href = "/login";
+            } else if (requestRegister.status === 400) {
+                console.log(requestRegister.responseText);
+                if (isJSON(requestRegister.responseText)) {
+                    let errors = JSON.parse(requestRegister.responseText);
                     if (errors && errors.errors) {
                        handleRegistrationErrors(errors);
                     }
                 } else {
-                    console.error("Error:", request.status, request.statusText);
-                    if (request.responseText === "User with this email is already registered.") {
-                        document.getElementById("email-error").innerText = "User with this email is already registered.";
+                    console.error("Error:", requestRegister.status, requestRegister.statusText);
+                    if (requestRegister.responseText === "User with this email is already registered.") {
+                        document.getElementById("email-error").innerText = " " + requestRegister.responseText;
                         elements[0].style.borderColor = "red";
+                    } else if (requestRegister.responseText === "Invalid date format. Expected format: dd.MM.yyyy") {
+                        document.getElementById("email-error").innerText = " " + requestRegister.responseText;
+                        elements[5].style.borderColor = "red";
                     } else {
-                        alert("Registration failed. Status code: " + request.status + ". Error message: " + request.responseText + ".");
+                        alert("Registration failed. Status code: " + requestRegister.status + ". Error message: " + requestRegister.responseText + ".");
                     }
                 }
             } else {
-                console.error("Error:", request.status, request.statusText);
-                alert("Registration failed. Status code: " + request.status + ". Error message: " + request.responseText + ".");
+                console.error("Error:", requestRegister.status, requestRegister.statusText);
+                alert("Registration failed. Status code: " + requestRegister.status + ". Error message: " + requestRegister.responseText + ".");
             }
         }
     };
 
+    requestRegister.send(JSON.stringify(registrationData));
+    return false;
+}
 
-    request.send(JSON.stringify(registrationData));
+function loginUser() {
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+
+    emailError.innerText = "";
+    passwordError.innerText = "";
+    email.style.borderColor = "black";
+    password.style.borderColor = "black";
+
+    if (email.value === "") {
+        email.style.borderColor = "red";
+        emailError.innerText = "Email is required.";
+        return false;
+    }
+
+    const emailRegex = /[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value)) {
+        emailError.innerText = " Invalid email address.";
+        email.style.borderColor = "red";
+        return false;
+    }
+
+    if (password.value === "") {
+        password.style.borderColor = "red";
+        passwordError.innerText = "Password is required.";
+        return false;
+    }
+
+    if (password.value.length < 10) {
+        passwordError.innerText = " Password must have at least 10 characters.";
+        password.style.borderColor = "red";
+        return false;
+    }
+
+    const loginData = {
+        email: email.value,
+        password: password.value
+    };
+
+    const requestLogin = new XMLHttpRequest();
+    requestLogin.open("POST", "/api/user/login", true);
+    requestLogin.setRequestHeader("Content-Type", "application/json");
+
+    requestLogin.onreadystatechange = function () {
+        if (requestLogin.readyState === 4) {
+            if (requestLogin.status === 200) {
+                console.log("Server response:", requestLogin.responseText);
+                alert("Login was successful!");
+                window.location.href = "/";
+            } else if (requestLogin.status === 400) {
+                console.log(requestLogin.responseText);
+                if (isJSON(requestLogin.responseText)) {
+                    let errors = JSON.parse(requestLogin.responseText);
+                    if (errors && errors.errors) {
+                        handleRegistrationErrors(errors);
+                    }
+                } else {
+                    console.error("Error:", requestLogin.status, requestLogin.statusText);
+                    if (requestLogin.responseText === "Invalid password.") {
+                        document.getElementById("password-error").innerText = " " + requestLogin.responseText;
+                        password.style.borderColor = "red";
+                    } else if (requestLogin.responseText === "The user with the given email does not exist.") {
+                        document.getElementById("email-error").innerText = " " + requestLogin.responseText;
+                        email.style.borderColor = "red";
+                    } else {
+                        alert("Login failed. Status code: " + requestLogin.status + ". Error message: " + requestLogin.responseText + ".");
+                    }
+                }
+            } else {
+                console.error("Error:", requestLogin.status, requestLogin.statusText);
+                alert("Login failed. Status code: " + requestLogin.status + ". Error message: " + requestLogin.responseText + ".");
+            }
+        }
+    };
+
+    requestLogin.send(JSON.stringify(loginData));
     return false;
 }
 
@@ -242,7 +326,7 @@ function handleRegistrationErrors(errors) {
         let errorMessage = error.split(":")[1].trim();
         let element = document.getElementById(fieldName + "-error");
         if (element) {
-                element.innerText = errorMessage;
+                element.innerText = " " + errorMessage;
             }
         }
 }
