@@ -72,8 +72,9 @@
 
 <div class="profile-info">
     <h2>Delivery information</h2>
+
     <label for="email"><b>Email: </b><span id="email-error" class="error"></span></label>
-    <input type="text" id="email" name="email" placeholder="" required>
+    <input type="text"  id="email" name="email" placeholder="" readonly required>
 
     <label for="name"><b>Name: </b><span id="name-error" class="error"></span></label>
     <input type="text" id="name" name="name" placeholder="" required>
@@ -86,17 +87,21 @@
 
     <label for="dateOfBirth"><b>Your date of birth: </b><span id="dateOfBirth-error" class="error"></span></label>
     <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="" required>
-    <label for="street"><b>Your street: </b><span id="street-error" class="error"></span></label>
-    <input type="text" id="street" name="street" placeholder="" required>
 
-    <label for="number"><b>Your house number: </b><span id="number-error" class="error"></span></label>
-    <input type="text" id="number" name="number" placeholder="" required>
+    <label for="city"><b>City: </b><span id="city-error" class="error"></span></label>
+    <input type="text" id="city" name="city" placeholder="Your city (e.g. Žilina)" required>
 
-    <label for="zipcode"><b>Your postal code: </b><span id="zipcode-error" class="error"></span></label>
-    <input type="text" id="zipcode" name="zipcode" placeholder="" required>
+    <label for="street"><b>Street: </b><span id="street-error" class="error"></span></label>
+    <input type="text" id="street" name="street" placeholder="Your street (e.g. Štefánikova)" required>
 
-    <label for="country"><b>Your country: </b><span id="country-error" class="error"></span></label>
-    <input type="text" id="country" name="country" placeholder="" required>
+    <label for="number"><b>House number: </b><span id="number-error" class="error"></span></label>
+    <input type="text" id="number" name="number" placeholder="Your house number (e.g. 254)" required>
+
+    <label for="zipcode"><b>Postal code: </b><span id="zipcode-error" class="error"></span></label>
+    <input type="text" id="zipcode" name="zipcode" placeholder="Your postal code (e.g. 098 02)" required>
+
+    <label for="country"><b>Country: </b><span id="country-error" class="error"></span></label>
+    <input type="text" id="country" name="country" placeholder="Your country (e.g Slovakia)" required>
 
     <input id="profile-submit" type="submit" value="Confirm order" onclick="">
 </div>

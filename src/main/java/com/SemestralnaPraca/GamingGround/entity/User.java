@@ -8,8 +8,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "pouzivatel")
@@ -30,6 +28,6 @@ public class User {
     private LocalDate dateOfBirth;
 
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    private List<Address> addresses = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Address address;
 }

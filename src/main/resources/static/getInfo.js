@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const surnameInput = document.getElementById("surname");
     const phoneNumberInput = document.getElementById("phoneNumber");
     const dateOfBirthInput = document.getElementById("dateOfBirth");
+    const cityInput = document.getElementById("city");
     const streetInput = document.getElementById("street");
     const numberInput = document.getElementById("number");
     const zipcodeInput = document.getElementById("zipcode");
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
         })
         .then(function (address) {
+            cityInput.value = address.city || "";
             streetInput.value = address.street || "";
             numberInput.value = address.number || "";
             zipcodeInput.value = address.zipcode || "";

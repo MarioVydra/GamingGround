@@ -18,13 +18,14 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    private String city;
     private String street;
     private String number;
     private String zipcode;
     private String country;
 
     @JsonIgnore
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_email")
     private User user;
 

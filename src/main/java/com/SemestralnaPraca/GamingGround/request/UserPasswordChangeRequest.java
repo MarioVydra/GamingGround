@@ -8,12 +8,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserLoginRequest {
+public class UserPasswordChangeRequest {
+
     @NotEmpty(message = "Email is required.")
     @Email(message = "Invalid email format.")
     private String email;
 
-    @NotEmpty(message = "Password is required.")
-    @Size(min = 10, message = "Invalid password.")
+    @NotEmpty(message = "Old password is required.")
+    @Size(min = 10, message = "Invalid old password.")
+    private String oldPassword;
+
+    @NotEmpty(message = "New password is required.")
+    @Size(min = 10, message = "New password must have at least 10 characters.")
     private String password;
 }

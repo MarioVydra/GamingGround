@@ -35,22 +35,25 @@
             <label for="surname"><b>Surname: </b><span id="surname-error" class="error"></span></label>
             <input type="text" id="surname" name="surname" placeholder="Your surname" required>
 
-            <label for="phoneNumber"><b>Your telephone number: </b><span id="phoneNumber-error" class="error"></span></label>
+            <label for="phoneNumber"><b>Telephone number: </b><span id="phoneNumber-error" class="error"></span></label>
             <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Your telephone number (e.g. +421910555798)" required>
 
-            <label for="dateOfBirth"><b>Your date of birth: </b><span id="dateOfBirth-error" class="error"></span></label>
+            <label for="dateOfBirth"><b>Date of birth: </b><span id="dateOfBirth-error" class="error"></span></label>
             <input type="text" id="dateOfBirth" name="dateOfBirth" placeholder="Your date of birth (e.g. 18.12.2001)" required>
 
-            <label for="street"><b>Your street: </b><span id="street-error" class="error"></span></label>
+            <label for="city"><b>City: </b><span id="city-error" class="error"></span></label>
+            <input type="text" id="city" name="city" placeholder="Your city (e.g. Žilina)" required>
+
+            <label for="street"><b>Street: </b><span id="street-error" class="error"></span></label>
             <input type="text" id="street" name="street" placeholder="Your street (e.g. Štefánikova)" required>
 
-            <label for="number"><b>Your house number: </b><span id="number-error" class="error"></span></label>
+            <label for="number"><b>House number: </b><span id="number-error" class="error"></span></label>
             <input type="text" id="number" name="number" placeholder="Your house number (e.g. 254)" required>
 
-            <label for="zipcode"><b>Your postal code: </b><span id="zipcode-error" class="error"></span></label>
+            <label for="zipcode"><b>Postal code: </b><span id="zipcode-error" class="error"></span></label>
             <input type="text" id="zipcode" name="zipcode" placeholder="Your postal code (e.g. 098 02)" required>
 
-            <label for="country"><b>Your country: </b><span id="country-error" class="error"></span></label>
+            <label for="country"><b>Country: </b><span id="country-error" class="error"></span></label>
             <input type="text" id="country" name="country" placeholder="Your country (e.g Slovakia)" required>
 
             <label id="privacy-policy">
@@ -66,6 +69,6 @@
         </div>
     </form>
 </div>
-<script th:src="@{/validateRegistration.js}"></script>
+<script th:src="@{/validateScript.js}"></script>
 </body>
 </html>

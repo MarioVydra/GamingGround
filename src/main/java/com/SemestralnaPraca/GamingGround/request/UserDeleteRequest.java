@@ -8,12 +8,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserLoginRequest {
+public class UserDeleteRequest {
     @NotEmpty(message = "Email is required.")
     @Email(message = "Invalid email format.")
     private String email;
 
     @NotEmpty(message = "Password is required.")
     @Size(min = 10, message = "Invalid password.")
-    private String password;
+    private String password2;
 }
