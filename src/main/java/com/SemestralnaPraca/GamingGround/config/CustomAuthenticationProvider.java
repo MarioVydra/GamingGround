@@ -14,7 +14,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
@@ -30,7 +32,10 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         User user = userRepository.findUserByEmail(email);
         if (user != null) {
             if (passwordEncoder.matches(password, user.getPassword())) {
-                UserDetails userDetails = new org.springframework.security.core.userdetails.User(email, user.getPassword(), Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")));
+                List<SimpleGrantedAuthority> authorities = Arrays.stream(user.getRoles().split(","))
+                        .map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+
+                UserDetails userDetails = new org.springframework.security.core.userdetails.User(email, user.getPassword(), authorities);
                 return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             } else {
                 throw new BadCredentialsException("Invalid password.");

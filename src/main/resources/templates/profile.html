@@ -14,6 +14,7 @@
         <li><a th:href="@{/shop}">SHOP</a></li>
         <li><a th:href="@{/about}">ABOUT</a></li>
         <li><a th:href="@{/contact}">CONTACT</a></li>
+        <li th:if="${isAdminAuthenticated}"><a th:href="@{/users-page}">USERS</a></li>
         <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
         <li th:if="${!isActuallyAuthenticated}"><a class="active" th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
             <span>LOG IN</span>
@@ -41,6 +42,9 @@
 
     <label for="email"><b>Email: </b><span id="email-error" class="error"></span></label>
     <input type="text"  id="email" name="email" placeholder="" readonly required>
+
+    <label for="role"><b>Roles: </b><span id="role-error" class="error"></span></label>
+    <input type="text"  id="role" name="role" placeholder="" readonly>
 
     <label for="name"><b>Name: </b><span id="name-error" class="error"></span></label>
     <input type="text" id="name" name="name" placeholder="" required>

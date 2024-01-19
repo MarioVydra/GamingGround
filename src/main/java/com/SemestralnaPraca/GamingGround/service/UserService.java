@@ -47,6 +47,11 @@ public class UserService {
         user.setPassword(hashedPassword);
 
         user.setPhoneNumber(request.getPhoneNumber());
+        if (request.getEmail().endsWith("@gamingground.com")) {
+            user.setRoles("ROLE_ADMIN,ROLE_USER");
+        } else {
+            user.setRoles("ROLE_USER");
+        }
 
         String dateString = request.getDateOfBirth();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
@@ -139,6 +144,17 @@ public class UserService {
             }
         } else {
             throw new BadCredentialsException("Invalid email address.");
+        }
+    }
+
+    public void subscribeNewsletter(String email) {
+        if (!userRepository.existsByEmail(email))
+        {
+            throw new RuntimeException("Invalid email address.");
+        } else {
+            User user = userRepository.findUserByEmail(email);
+            user.setNewsletter(true);
+            userRepository.save(user);
         }
     }
 }

@@ -110,6 +110,16 @@ public class UserController {
         }
     }
 
+    @PostMapping("/subscribeNewsletter/{email}")
+    public ResponseEntity<?> subscribeNewsletter(@PathVariable String email) {
+        try {
+            userService.subscribeNewsletter(email);
+            return ResponseEntity.ok().body("You have successfully subscribed to the newsletter.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
     private Cookie deleteCookie() {
         Cookie cookie = new Cookie("jwtToken", null);
         cookie.setPath("/");

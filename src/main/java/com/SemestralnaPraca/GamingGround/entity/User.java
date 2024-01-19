@@ -26,6 +26,8 @@ public class User {
     private String password;
     private String phoneNumber;
     private LocalDate dateOfBirth;
+    private boolean newsletter;
+    private String roles;
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")

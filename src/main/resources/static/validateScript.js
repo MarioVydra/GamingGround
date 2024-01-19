@@ -136,7 +136,7 @@ function validateRegistration() {
                         document.getElementById("email-error").innerText = " " + requestRegister.responseText;
                         elements[0].style.borderColor = "red";
                     } else if (requestRegister.responseText === "Invalid date format. Expected format: dd.MM.yyyy") {
-                        document.getElementById("email-error").innerText = " " + requestRegister.responseText;
+                        document.getElementById("dateOfBirth-error").innerText = " " + requestRegister.responseText;
                         elements[5].style.borderColor = "red";
                     } else {
                         alert("Registration failed. Status code: " + requestRegister.status + ". Error message: " + requestRegister.responseText + ".");
@@ -215,10 +215,10 @@ function loginUser() {
                 } else {
                     console.error("Error:", requestLogin.status, requestLogin.statusText);
                     if (requestLogin.responseText === "Invalid password.") {
-                        document.getElementById("password-error").innerText = " " + requestLogin.responseText;
+                        passwordError.innerText = " " + requestLogin.responseText;
                         password.style.borderColor = "red";
                     } else if (requestLogin.responseText === "The user with the given email does not exist.") {
-                        document.getElementById("email-error").innerText = " " + requestLogin.responseText;
+                        emailError.innerText = " " + requestLogin.responseText;
                         email.style.borderColor = "red";
                     } else {
                         alert("Login failed. Status code: " + requestLogin.status + ". Error message: " + requestLogin.responseText + ".");
@@ -537,8 +537,8 @@ function updateInfo() {
                 } else {
                     console.error("Error:", updateRequest.status, updateRequest.statusText);
                     if (updateRequest.responseText === "Invalid date format. Expected format: dd.MM.yyyy") {
-                        document.getElementById("email-error").innerText = " " + updateRequest.responseText;
-                        elements[5].style.borderColor = "red";
+                        document.getElementById("dateOfBirth-error").innerText = " " + updateRequest.responseText;
+                        elements[3].style.borderColor = "red";
                     } else {
                         alert("Registration failed. Status code: " + updateRequest.status + ". Error message: " + updateRequest.responseText + ".");
                     }
@@ -560,9 +560,11 @@ function handleErrors(errors) {
         let error = errorList[i];
         let fieldName = error.split(":")[0].trim();
         let errorMessage = error.split(":")[1].trim();
-        let element = document.getElementById(fieldName + "-error");
-        if (element) {
-                element.innerText = " " + errorMessage;
+        let elementError = document.getElementById(fieldName + "-error");
+        let element = document.getElementById(fieldName);
+        if (elementError && element) {
+                elementError.innerText = " " + errorMessage;
+                element.style.borderColor = "red";
             }
         }
 }

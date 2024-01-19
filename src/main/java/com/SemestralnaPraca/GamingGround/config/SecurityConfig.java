@@ -24,7 +24,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         http.csrf(csrf -> csrf.disable());
-        return http.authorizeHttpRequests((auth) -> auth.anyRequest().permitAll()).build();
+        http.authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/user/login", "/api/user/save").permitAll()
+                .requestMatchers("api/admin/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/users").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/users-page").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("api/user/**").authenticated()
+                .requestMatchers("/cart").authenticated()
+                .requestMatchers("/profile").authenticated()
+                .anyRequest().permitAll()
+        );
+        return http.build();
     }
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

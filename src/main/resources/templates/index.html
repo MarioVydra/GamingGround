@@ -14,6 +14,7 @@
     <li><a th:href="@{/shop}">SHOP</a></li>
     <li><a th:href="@{/about}">ABOUT</a></li>
     <li><a th:href="@{/contact}">CONTACT</a></li>
+    <li th:if="${isAdminAuthenticated}"><a th:href="@{/users-page}">USERS</a></li>
     <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
     <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
         <span>LOG IN</span>
@@ -38,7 +39,7 @@
       <h1>Get ready your wallets!</h1>
       <h3>The new series of RTX graphic cards is here.</h3>
       <h2>Stronger than ever.</h2>
-      <a href="#"><h4><button>BUY NOW</button></h4></a>
+      <a th:href="@{/shop}"><h4><button>BUY NOW</button></h4></a>
     </div>
   </div>
 
@@ -46,7 +47,7 @@
     <div class="news3">
       <h1>Avatar: Frontiers of Pandora</h1>
       <h2>Coming soon.</h2>
-      <a href="#"><h4><button>PREORDER NOW</button></h4></a>
+      <a th:href="@{/shop}"><h4><button>PREORDER NOW</button></h4></a>
     </div>
   </div>
 
@@ -55,7 +56,7 @@
       <h1>New versions of PS5 are here!</h1>
       <h3>Slimmer than ever.</h3>
       <h2>Grab it ASAP.</h2>
-      <a href="#"><h4><button>BUY NOW</button></h4></a>
+      <a th:href="@{/shop}"><h4><button>BUY NOW</button></h4></a>
     </div>
   </div>
 
@@ -63,7 +64,7 @@
     <div class="news5">
       <h1>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h1>
       <h2>Expected release Q1 2024.</h2>
-      <a href="#"><h4><button>PREORDER NOW</button></h4></a>
+      <a th:href="@{/shop}"><h4><button>PREORDER NOW</button></h4></a>
     </div>
   </div>
 
@@ -72,7 +73,7 @@
       <h1>Assassin's Creed Mirage</h1>
       <h3>The time of the assassins has come!</h3>
       <h2>Join Basim's journey and discover medieval Baghdad.</h2>
-      <a href="#"><h4><button>BUY NOW</button></h4></a>
+      <a th:href="@{/shop}"><h4><button>BUY NOW</button></h4></a>
     </div>
   </div>
 
@@ -90,7 +91,7 @@
 
 <div id="banner1" class="banner">
   <h1>Use free shipping until the end of the year.</h1>
-  <a th:href="@{/shop.html}"><button>Shop now</button></a>
+  <a th:href="@{/shop}"><button>Shop now</button></a>
 </div>
 
 <div class="bestseller-section">
@@ -234,11 +235,12 @@
     <h1>Sign up for newsletters</h1>
   </div>
   <div class="newsletter-input">
+    <span id="newsletter-email-error" class="error"></span>
     <form action="">
       <label>
         <input id="newsletter-email" type="text" placeholder="Your e-mail address" required>
       </label>
-      <input id="newsletter-submit" type="submit" value="Sign up">
+      <input id="newsletter-submit" type="submit" value="Sign up" onclick="return subscribeNewsLetter()">
     </form>
   </div>
 </div>
@@ -287,7 +289,7 @@
   </div>
 </div>
 
-<script th:src="@{/slideShowScript.js}"></script>
+<script th:src="@{/indexScript.js}"></script>
 <script th:src="@{/script.js}"></script>
 </body>
 </html>

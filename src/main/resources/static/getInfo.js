@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const username = document.getElementById("accountEmail").textContent;
     const emailInput = document.getElementById("email");
+    const roleInput = document.getElementById("role");
     const nameInput = document.getElementById("name");
     const surnameInput = document.getElementById("surname");
     const phoneNumberInput = document.getElementById("phoneNumber");
@@ -20,6 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(function (user) {
             emailInput.value = user.email || "";
+            if (roleInput) {
+                roleInput.value = user.roles || "";
+            }
             nameInput.value = user.name || "";
             surnameInput.value = user.surname || "";
             phoneNumberInput.value = user.phoneNumber || "";

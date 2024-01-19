@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Ground | Error</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-header">
+            <img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo">
+            <h2>Gaming Ground</h2>
+        </div>
+        <div>
+            <h1>Oops, an error occurred!</h1>
+            <h4>STATUS:</h4>
+            <h1 th:text="${status}"></h1>
+            <h4>ERROR MESSAGE:</h4>
+            <h1 th:text="${error}"></h1>
+            <a th:href="@{/}"><h3>Click here to redirect.</h3></a>
+        </div>
+    </div>
+</body>
+</html>

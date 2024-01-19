@@ -34,6 +34,11 @@ h4, button {
     font-size: 25px;
 }
 
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
 .navbar {
     background: slategrey;
     box-shadow: 0 0 3px black;
@@ -1134,6 +1139,79 @@ h4, button {
     margin-right: 75px;
 }
 
+/* ERROR PAGE */
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 50vh;
+    flex-direction: column;
+    border: 3px black solid;
+    border-radius: 100px;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+.error-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.error-page img {
+    margin-right: 20px;
+}
+
+.error-page a {
+    cursor: pointer;
+    transition: 0.4s;
+    color: black;
+}
+
+.error-page a:hover {
+    color: slategrey;
+}
+
+/* USERS */
+#users-header {
+    background-image: url("Images/users-header.jpg");
+    color: steelblue;
+}
+
+.tableOfUsers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2% 0;
+}
+
+.tableOfUsers button {
+    transition: 0.4s;
+    cursor: pointer;
+    margin-bottom: 5%;
+    border-radius: 10px;
+    border: 2px solid black;
+    background: transparent;
+}
+
+.tableOfUsers button:hover {
+    background: dimgrey;
+}
+
+#usersTable {
+    text-align: center;
+    font-size: 25px;
+    width: 50%;
+    margin: 2% 0;
+}
+
 
 /* MEDIA */
 @media  (max-width: 1650px)
@@ -1176,6 +1254,10 @@ h4, button {
 
     .itemList {
         margin: 2% 2%;
+    }
+
+    .error-page {
+        width: 80%;
     }
 }
 
@@ -1372,8 +1454,8 @@ h4, button {
         margin: 2% 10%;
    }
 
-   #profile-header h1 {
-       font-size: 40px;
+   #profile-header h1, #users-header h1, #cart-header h1 {
+       font-size: 30px;
    }
 
 
@@ -1396,6 +1478,11 @@ h4, button {
 
     .items {
         padding: 15px 25px;
+    }
+
+    /* USERS */
+    #usersTable {
+        width: 90%;
     }
 }
 
@@ -1563,6 +1650,16 @@ h4, button {
     .itemList {
         border-radius: 50px;
     }
+
+    /* ERROR */
+    .error-page {
+        border-radius: 50px;
+    }
+
+    /* USERS */
+    #usersTable {
+        font-size: 10px;
+    }
 }
 
 @media (max-width: 500px)
@@ -1609,6 +1706,10 @@ h4, button {
 
     .login-input input, .registration-input input {
         font-size: 15px;
+    }
+
+    #profile-header h1, #users-header h1, #cart-header h1 {
+        font-size: 25px;
     }
 
 }
@@ -1712,5 +1813,9 @@ h4, button {
     .item-picture {
         max-width: 75px;
         max-height: 75px;
+    }
+
+    #profile-header h1, #users-header h1, #cart-header h1 {
+        font-size: 20px;
     }
 }
