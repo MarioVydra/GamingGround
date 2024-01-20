@@ -9,4 +9,6 @@ public class ProductUpdateRequest {
     private String id;
     private String attribute;
     private String value;
+    private String imageUrl;
+    private int quantity;
 }

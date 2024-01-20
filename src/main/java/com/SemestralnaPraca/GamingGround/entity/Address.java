@@ -8,8 +8,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "address")
-@Getter
-@Setter
 @RequiredArgsConstructor
 @Data
 public class Address {

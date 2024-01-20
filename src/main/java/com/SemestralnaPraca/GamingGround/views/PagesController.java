@@ -74,6 +74,12 @@ public class PagesController {
         return "users-page";
     }
 
+    @GetMapping("/product-details/{id}")
+    public String loadProductDetail(Model model) {
+        addAttributes(model);
+        return "product-details";
+    }
+
     private void addAttributes(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

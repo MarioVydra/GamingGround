@@ -42,9 +42,18 @@
         <div class="searchbar">
             <img class="search-icon" th:src="@{/Images/search.png}" alt="Search icon">
             <label>
-                <input type="text" placeholder="Search...">
+                <input type="text" placeholder="Search..." id="search-input">
             </label>
         </div>
+    </div>
+
+    <div th:if="${isAdminAuthenticated}">
+        <form id="upload-form" class="productsInput" enctype="multipart/form-data">
+            <h3>Insert products</h3>
+            <label for="fileInput"><b>File [products in JSON]: </b></label>
+            <input type="file" id="fileInput" name="fileInput" placeholder="Insert file" required>
+            <input id="file-submit" type="submit" value="Send file" onclick="">
+        </form>
     </div>
 
     <div class="product-section">
@@ -63,12 +72,12 @@
                     <li><h4>PRICE</h4></li>
                     <li>
                         <label>
-                            <input type="text" placeholder="From [€]">
+                            <input type="text" id="min-price" placeholder="From [€]" onchange="updatePriceFilter()">
                         </label>
                     </li>
                     <li>
                         <label>
-                            <input type="text" placeholder="To [€]">
+                            <input type="text" id="max-price" placeholder="To [€]" onchange="updatePriceFilter()">
                         </label>
                     </li>
                     <li><h4>CATEGORIES</h4></li>
@@ -84,265 +93,11 @@
         </div>
 
         <div class="products-container">
-            <a th:href="@{/product-details}">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-ACmirage.png}" alt="AC Mirage">
-                    <div class="product-description">
-                        <h3>Assasins's Creed Mirage</h3>
-                        <div class="product-price">
-                            <h3>50€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
 
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Spiderman2.png}" alt="Spider-Man 2">
-                    <div class="product-description">
-                        <h3>Spider-Man 2</h3>
-                        <div class="product-price">
-                            <h3>70€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        </div>
 
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-AlanWake2.jpg}" alt="Alan Wake II">
-                    <div class="product-description">
-                        <h3>Alan Wake II</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div class="pages">
 
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="product">
-                    <img class="product-image" th:src="@{/Images/product-Baldursgate.jpg}" alt="Baldur's Gate 3">
-                    <div class="product-description">
-                        <h3>Baldur's Gate 3</h3>
-                        <div class="product-price">
-                            <h3>60€</h3>
-                            <a th:href="@{/add-to-cart}"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
-                        </div>
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
 </div>

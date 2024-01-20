@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Ground | Product Detail</title>
+    <link rel="stylesheet" th:href="@{/style.css}">
+</head>
+<body>
+<div class="navbar">
+    <a th:href="@{#}"><img class="logo-image" th:src="@{/Images/logo.png}" alt="Webpage logo"></a>
+    <ul class="menu">
+        <li><a th:href="@{/}">HOME</a></li>
+        <li><a th:href="@{/shop}">SHOP</a></li>
+        <li><a th:href="@{/about}">ABOUT</a></li>
+        <li><a th:href="@{/contact}">CONTACT</a></li>
+        <li th:if="${isAdminAuthenticated}"><a th:href="@{/users-page}">USERS</a></li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}"><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo"></a></li>
+        <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span>LOG IN</span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}"><img class="profile-image" th:src="@{/Images/profile.png}" alt="Profile logo">
+            <span th:text="${username}"></span>
+        </a>
+        </li>
+        <li th:if="${isActuallyAuthenticated}"><a><span onclick="logoutUser()">LOG OUT</span></a></li>
+        <li><img class="close-image" th:src="@{/Images/close.png}" alt="Close logo"></li>
+    </ul>
+
+    <div class="mobile">
+        <img class="hamburger-image" th:src="@{/Images/hamburger.png}" alt="Menu logo">
+    </div>
+</div>
+
+<div id="shop-header" class="page-header">
+    <h1>#STAYHOME</h1>
+</div>
+
+<div class="product-details">
+    <div class="product-information">
+        <div class="product-image">
+            <img class="product-img" src="" alt="Product picture">
+        </div>
+
+        <div class="product-info">
+            <h1 id="product-title"></h1>
+            <span id="product-description"></span>
+            <h2 id="product-price"></h2>
+            <a href="#"><button><img class="cart-image" th:src="@{/Images/cart.png}" alt="Cart logo">  Add to cart</button></a>
+            <span id="product-quantity"></span>
+        </div>
+    </div>
+
+    <div class="reviews">
+        <h1>Reviews</h1>
+        <div class="review">
+            <div class="reviewHeader">
+                <h4>Rating</h4>
+                <h4>Name</h4>
+                <h4>Time</h4>
+                <div>
+                    <img class="edit-review" th:src="@{/Images/edit-review.png}" alt="Delete logo">
+                    <img class="delete-review" th:src="@{/Images/close.png}" alt="Delete logo">
+                </div>
+            </div>
+            <label for="review"><b></b></label>
+            <textarea id="review" name="review" rows="4" cols="50" readonly>Enter text here...</textarea>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="inner-footer">
+        <h4>FOLLOW US</h4>
+        <ul>
+            <li><a th:href="@{https://www.facebook.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/facebook.png}" alt="Facebook logo">Gaming Ground</a></li>
+            <li><a th:href="@{https://www.instagram.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/instagram.png}" alt="Instagram logo">@gamingground</a></li>
+            <li><a th:href="@{https://twitter.com/?lang='en'}" target="_blank"><img class="follow-logo" th:src="@{/Images/twitter.png}" alt="Twitter logo">@gamingground</a></li>
+            <li><a th:href="@{https://www.youtube.com/}" target="_blank"><img class="follow-logo" th:src="@{/Images/youtube.png}" alt="Youtube logo">Gaming Ground</a></li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>CONTACT</h4>
+        <ul>
+            <li>Námestie Andreja Hlinku 7B, 010 01 Žilina</li>
+            <li>gamingground@gmail.com</li>
+            <li>+421 987 543 111</li>
+            <li>Monday-Friday: 9AM to 9PM</li>
+            <li>Saturday-Sunday: 11AM to 6PM</li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>MY ACCOUNT</h4>
+        <ul>
+            <li th:if="${isActuallyAuthenticated}"><a th:href="@{/profile}">My profile</a></li>
+            <li th:if="${!isActuallyAuthenticated}"><a th:href="@{/login}">Sign in</a></li>
+            <li th:if="${isActuallyAuthenticated}"><a th:href="@{/cart}">View cart</a></li>
+            <li><a href="">My wishlist</a></li>
+            <li><a href="">Help</a></li>
+        </ul>
+    </div>
+
+    <div class="inner-footer">
+        <h4>COMPANY</h4>
+        <ul>
+            <li><a th:href="@{/about}">About us</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+            <li><a th:href="@{/privacy-policy}">Privacy policy</a></li>
+            <li><a th:href="@{/terms-and-conditions}">Terms & conditions</a></li>
+        </ul>
+    </div>
+</div>
+<script th:src="@{/productDetail.js}"></script>
+<script th:src="@{/script.js}"></script>
+</body>
+</html>
