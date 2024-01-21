@@ -3,6 +3,9 @@ package com.SemestralnaPraca.GamingGround.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -21,4 +24,12 @@ public class Product {
     private String category;
     private String imageUrl;
     private int quantity;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Review> reviews = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

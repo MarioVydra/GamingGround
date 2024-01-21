@@ -100,26 +100,12 @@ window.onload = () => loadProducts();
 
 /** SHOP PAGE - PRODUCT SORT & FILTER **/
 
-const bestButton = document.getElementById("best-button");
 const cheapButton = document.getElementById("cheap-button");
 const expensiveButton = document.getElementById("expensive-button");
 const reviewsButton = document.getElementById("reviews-button");
 const gamesButton = document.getElementById("games-button");
 const gpuButton = document.getElementById("gpu-button");
 const consoleButton = document.getElementById("console-button");
-
-if (bestButton) {
-    bestButton.addEventListener("click", function () {
-        if (bestButton.style.textDecoration === "underline") {
-            deactivateSortButtons();
-        } else {
-            deactivateSortButtons();
-            bestButton.style.textDecoration = "underline";
-            currentSort = "best";
-        }
-        loadProducts();
-    });
-}
 
 if (cheapButton) {
     cheapButton.addEventListener("click", function () {
@@ -161,7 +147,6 @@ if (reviewsButton) {
 }
 
 function deactivateSortButtons() {
-    bestButton.style.textDecoration = "none";
     cheapButton.style.textDecoration = "none";
     expensiveButton.style.textDecoration = "none";
     reviewsButton.style.textDecoration = "none";

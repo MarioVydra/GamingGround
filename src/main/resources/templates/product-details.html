@@ -52,21 +52,25 @@
         </div>
     </div>
 
+    <div th:if="${isActuallyAuthenticated}" class="addReview">
+        <h2>Add review</h2>
+        <form id="reviewForm">
+            <label for="reviewRating"><b>Rating:</b></label>
+            <select id="reviewRating" name="reviewRating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <label for="reviewContent"><b>Review: </b><span id="review-error" class="error"></span></label>
+            <textarea id="reviewContent" name="review" rows="4" cols="25" required></textarea>
+            <button type="submit">Submit review</button>
+        </form>
+    </div>
+
     <div class="reviews">
-        <h1>Reviews</h1>
-        <div class="review">
-            <div class="reviewHeader">
-                <h4>Rating</h4>
-                <h4>Name</h4>
-                <h4>Time</h4>
-                <div>
-                    <img class="edit-review" th:src="@{/Images/edit-review.png}" alt="Delete logo">
-                    <img class="delete-review" th:src="@{/Images/close.png}" alt="Delete logo">
-                </div>
-            </div>
-            <label for="review"><b></b></label>
-            <textarea id="review" name="review" rows="4" cols="50" readonly>Enter text here...</textarea>
-        </div>
+
     </div>
 </div>
 

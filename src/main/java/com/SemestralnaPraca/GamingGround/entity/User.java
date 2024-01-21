@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "pouzivatel")
@@ -28,4 +31,12 @@ public class User {
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
     private Address address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Review> reviews = new HashSet<>();
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(email);
+    }
 }

@@ -20,23 +20,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function deleteSelectedUsers() {
-    let selectedEmails = Array.from(document.querySelectorAll('input[name="userEmail"]:checked'))
-        .map(checkbox => checkbox.value);
-    console.log(JSON.stringify({ userEmails: selectedEmails }));
+    if (confirm("Do you really want to delete selected users?"))
+    {
+        let selectedEmails = Array.from(document.querySelectorAll('input[name="userEmail"]:checked'))
+            .map(checkbox => checkbox.value);
+        console.log(JSON.stringify({ userEmails: selectedEmails }));
 
-    fetch("api/admin/delete", {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ userEmails: selectedEmails })
-    })
-        .then(response => {
-            if (response.ok) {
-                location.reload();
-            } else {
-                alert("Error: Could not delete users.");
-            }
+        fetch("api/admin/delete", {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ userEmails: selectedEmails })
         })
-        .catch(error => console.error("Error", error));
+            .then(response => {
+                if (response.ok) {
+                    location.reload();
+                } else {
+                    alert("Error: Could not delete users.");
+                }
+            })
+            .catch(error => console.error("Error", error));
+    }
 }
