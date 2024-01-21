@@ -24,6 +24,7 @@ public class Product {
     private String category;
     private String imageUrl;
     private int quantity;
+    private double averageRating = 0.0;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Review> reviews = new HashSet<>();

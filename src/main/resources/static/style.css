@@ -773,14 +773,15 @@ table, th, td {
     margin-left: 20px;
 }
 
-.product-info button {
+.product-info button, .reviews button  {
     background: transparent;
     transition: 0.4s;
+    border: 2px solid black;
     border-radius: 10px;
     margin-bottom: 10px;
 }
 
-.product-info button:hover {
+.product-info button:hover, .reviews button:hover {
     background: dimgrey;
 }
 

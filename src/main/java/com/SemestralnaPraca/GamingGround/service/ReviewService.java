@@ -7,6 +7,7 @@ import com.SemestralnaPraca.GamingGround.repository.ProductRepository;
 import com.SemestralnaPraca.GamingGround.repository.ReviewRepository;
 import com.SemestralnaPraca.GamingGround.repository.UserRepository;
 import com.SemestralnaPraca.GamingGround.request.ReviewSaveRequest;
+import com.SemestralnaPraca.GamingGround.request.ReviewUpdateRequest;
 import com.SemestralnaPraca.GamingGround.response.ReviewResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -47,8 +48,10 @@ public class ReviewService {
             user.getReviews().add(review);
             userRepository.save(user);
             product.get().getReviews().add(review);
+            product.get().setAverageRating(this.calculateProductRating(product.get().getId()));
             productRepository.save(product.get());
-
+        } else {
+            throw new IllegalArgumentException("User or product does not exist.");
         }
     }
 
@@ -67,5 +70,53 @@ public class ReviewService {
         response.setNameAndSurname(review.getUser().getName() + " " + review.getUser().getSurname());
         response.setCanEdit(review.getUser().getEmail().equals(SecurityContextHolder.getContext().getAuthentication().getName()));
         return response;
+    }
+
+    public void deleteReview(UUID reviewId) {
+        if (!reviewRepository.existsById(reviewId)) {
+            throw new IllegalArgumentException("Review does not exist.");
+        } else {
+            Optional<Review> review = reviewRepository.findById(reviewId);
+
+            if (review.isPresent()) {
+                Product product = review.get().getProduct();
+                reviewRepository.deleteById(reviewId);
+                product.setAverageRating(this.calculateProductRating(product.getId()));
+                productRepository.save(product);
+            }
+
+        }
+    }
+
+    public void updateReview(UUID reviewId, ReviewUpdateRequest request) {
+        if (!reviewRepository.existsById(reviewId)) {
+            throw new IllegalArgumentException("Review does not exist.");
+        } else {
+            Optional<Review> review = reviewRepository.findById(reviewId);
+
+            if (review.isPresent())
+            {
+                review.get().setContent(request.getContent());
+                review.get().setDate(LocalDateTime.now());
+                reviewRepository.save(review.get());
+            }
+        }
+    }
+
+    private double calculateProductRating(UUID productId) {
+        List<Review> reviews = reviewRepository.findAllByProductId(productId);
+        double sum = 0.0;
+        int count = 0;
+
+        for (Review review: reviews) {
+            sum += review.getRating();
+            count++;
+        }
+
+        double averageRating = 0.0;
+        if (count > 0) {
+            averageRating = sum / count;
+        }
+        return Math.round(averageRating * 100.0) / 100.0;
     }
 }

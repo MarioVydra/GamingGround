@@ -65,6 +65,7 @@ function loadProducts(page = 0, size = 10) {
                                 <a href="/cart"><button><img class="cart-image" src="/Images/cart.png" alt="Cart logo">  Add to cart</button></a>
                             </div>
                             <span>Quantity in stock: ${product.quantity}</span>
+                            <h4>Average rating: ${product.averageRating}/5</h4>
                         </div>
                     </div>
                     </a>`;
@@ -229,6 +230,7 @@ document.getElementById("upload-form").addEventListener("submit", function(e) {
         .then(response => response.json())
         .then(data => {
             console.log("Success", data);
+            location.reload();
         })
         .catch(error => console.error("Error uploading products:", error));
 });

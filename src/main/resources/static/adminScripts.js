@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    fetch("api/admin/users")
+    fetch("/api/admin/users")
         .then(response => response.json())
         .then(users => {
             users.forEach(user => {
@@ -26,7 +26,7 @@ function deleteSelectedUsers() {
             .map(checkbox => checkbox.value);
         console.log(JSON.stringify({ userEmails: selectedEmails }));
 
-        fetch("api/admin/delete", {
+        fetch("/api/admin/delete", {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

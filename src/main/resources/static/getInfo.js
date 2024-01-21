@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const zipcodeInput = document.getElementById("zipcode");
     const countryInput = document.getElementById("country");
 
-    fetch("api/user/" + username)
+    fetch("/api/user/" + username)
         .then (function (response) {
             if (!response.ok) {
                 throw new Error("Network response was not ok: " + response);
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
            console.error("There was a problem with the fetch operation: ", error);
         });
 
-    fetch("api/address/" + username)
+    fetch("/api/address/" + username)
         .then (function (response) {
             if (!response.ok) {
                 throw new Error("Network response was not ok: " + response);

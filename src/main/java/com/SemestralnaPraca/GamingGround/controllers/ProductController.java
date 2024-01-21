@@ -37,6 +37,13 @@ public class ProductController {
         return productService.getProducts(page, size, minPrice, maxPrice, category, title, sortBy);
     }
 
+    @GetMapping("/indexProducts")
+    public Page<Product> showProducts(@RequestParam(defaultValue = "0") int page,
+                                      @RequestParam(defaultValue = "5") int size)
+    {
+        return productService.getIndexProducts(page, size);
+    }
+
     @PostMapping("/save")
     public ResponseEntity<String> saveProduct(@RequestBody ProductSaveRequest request) {
         try {

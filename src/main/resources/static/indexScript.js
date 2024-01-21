@@ -40,6 +40,38 @@ function showSlides(n) {
     }, 10000);
 }
 
+function loadProducts(page = 0, size = 5) {
+    fetch(`/api/product/indexProducts?page=${page}&size=${size}`)
+        .then(response => response.json())
+        .then(pageData => {
+            const productsContainer = document.querySelector(".products-container");
+            productsContainer.innerHTML = "";
+
+            pageData.content.forEach(product => {
+                const productElement =
+                    `<a href="/product-details/${product.id}">
+                    <div class="product">
+                        <img class="product-image" src="${product.imageUrl}" alt="${product.productTitle}">
+                        <div class="product-description">
+                            <h3>${product.productTitle}</h3>
+                            <span>${product.description}</span>
+                            <div class="product-price">
+                                <h3>${product.price}€</h3>
+                                <a href="/cart"><button><img class="cart-image" src="/Images/cart.png" alt="Cart logo">  Add to cart</button></a>
+                            </div>
+                            <span>Quantity in stock: ${product.quantity}</span>
+                            <h4>Average rating: ${product.averageRating}/5</h4>
+                        </div>
+                    </div>
+                    </a>`;
+                productsContainer.innerHTML += productElement;
+            });
+        })
+        .catch(error => console.error("Error loading products:", error));
+}
+
+window.onload = () => loadProducts();
+
 function subscribeNewsLetter() {
     const newsletterEmail = document.getElementById("newsletter-email");
     const newsletterEmailError = document.getElementById("newsletter-email-error");

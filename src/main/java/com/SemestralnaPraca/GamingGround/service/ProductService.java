@@ -31,6 +31,7 @@ public class ProductService {
         Pageable pageable = switch (sortBy) {
             case ("priceAsc") -> PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "price"));
             case ("priceDesc") -> PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "price"));
+            case ("reviews") -> PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "averageRating"));
             default -> PageRequest.of(page, size, Sort.by(sortBy));
         };
 
@@ -55,6 +56,11 @@ public class ProductService {
         } else {
             return productRepository.findAll(pageable);
         }
+    }
+
+    public Page<Product> getIndexProducts(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return productRepository.findAll(pageable);
     }
 
     public UUID saveProduct(ProductSaveRequest request) {
@@ -111,4 +117,6 @@ public class ProductService {
 
         productRepository.saveAll(products);
     }
+
+
 }
