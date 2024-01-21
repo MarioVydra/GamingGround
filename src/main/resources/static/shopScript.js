@@ -62,7 +62,7 @@ function loadProducts(page = 0, size = 10) {
                             <span>${product.description}</span>
                             <div class="product-price">
                                 <h3>${product.price}€</h3>
-                                <a href="/cart"><button><img class="cart-image" src="/Images/cart.png" alt="Cart logo">  Add to cart</button></a>
+                                <a id="cart-button" onclick="addToCart('${product.id}')"><button><img class="cart-image" src="/Images/cart.png" alt="Cart logo">  Add to cart</button></a>
                             </div>
                             <span>Quantity in stock: ${product.quantity}</span>
                             <h4>Average rating: ${product.averageRating}/5</h4>

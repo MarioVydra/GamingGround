@@ -2,6 +2,7 @@ package com.SemestralnaPraca.GamingGround.service;
 
 import com.SemestralnaPraca.GamingGround.config.JwtUtil;
 import com.SemestralnaPraca.GamingGround.entity.Address;
+import com.SemestralnaPraca.GamingGround.entity.Cart;
 import com.SemestralnaPraca.GamingGround.entity.User;
 import com.SemestralnaPraca.GamingGround.repository.AddressRepository;
 import com.SemestralnaPraca.GamingGround.repository.UserRepository;
@@ -72,6 +73,11 @@ public class UserService {
         address.setUser(user);
 
         user.setAddress(address);
+
+        Cart cart = new Cart();
+        cart.setUser(user);
+
+        //user.setCart(cart);
 
         return userRepository.save(user).getEmail();
     }

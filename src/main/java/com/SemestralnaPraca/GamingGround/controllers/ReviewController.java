@@ -45,7 +45,7 @@ public class ReviewController {
     public ResponseEntity<?> deleteReview(@PathVariable UUID reviewId) {
         try {
             reviewService.deleteReview(reviewId);
-            return ResponseEntity.ok().body("Review successfully added.");
+            return ResponseEntity.ok().body("Review successfully deleted.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }
@@ -58,7 +58,7 @@ public class ReviewController {
 
         try {
             reviewService.updateReview(reviewId, request);
-            return ResponseEntity.ok().body("Review successfully added.");
+            return ResponseEntity.ok().body("Review successfully updated.");
         } catch (IllegalArgumentException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

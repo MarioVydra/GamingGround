@@ -1284,8 +1284,21 @@ table, th, td {
     background: dimgrey;
     border-radius: 25px;
     padding: 25px 50px;
-    cursor: pointer;
     transition: 0.5s;
+    width: 70%;
+}
+
+.items a {
+    text-decoration: none;
+    color: black;
+}
+
+.items img {
+    cursor: pointer;
+}
+
+.items a:hover {
+    color: darkgrey;
 }
 
 .items:hover {
@@ -1847,6 +1860,10 @@ table, th, td {
     /* USERS */
     #usersTable {
         font-size: 10px;
+    }
+
+    .items {
+        width: 95%;
     }
 }
 

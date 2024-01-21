@@ -5,6 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
    fetch("/api/product/" + productId)
        .then(response => response.json())
        .then(product => {
+           document.getElementById("cart-button").onclick = function () {
+               addToCart(product.id);
+           };
            document.getElementById("product-title").innerText = product.productTitle;
            document.getElementById("product-description").innerText = product.description;
            document.getElementById("product-price").innerText = product.price + "€";
@@ -127,4 +130,20 @@ function editReview(reviewId) {
             .catch(error => console.error("Error", error));
     };
 
+}
+
+
+/* ADD TO CART */
+function addToCart(productId) {
+    fetch("/api/cart/add/" + productId, {
+        method: "POST",
+    })
+    .then(response => {
+        if (response.ok) {
+            alert("Item successfully added to the cart.");
+        } else {
+            alert("Error while adding item to the cart.");
+        }
+    })
+    .catch(error => console.error("Error", error));
 }

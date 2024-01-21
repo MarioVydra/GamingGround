@@ -35,6 +35,9 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Review> reviews = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private Cart cart;
+
     @Override
     public int hashCode() {
         return Objects.hashCode(email);

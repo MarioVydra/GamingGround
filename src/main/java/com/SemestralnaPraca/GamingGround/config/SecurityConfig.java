@@ -31,6 +31,7 @@ public class SecurityConfig {
                 .requestMatchers("/users-page").hasAuthority("ROLE_ADMIN")
                 .requestMatchers("/api/user/**").authenticated()
                 .requestMatchers("/api/review/save", "api/review/delete/{reviewId}", "api/review/update/{reviewId}").authenticated()
+                .requestMatchers("/api/cart/**").authenticated()
                 .requestMatchers("/cart").authenticated()
                 .requestMatchers("/profile").authenticated()
                 .anyRequest().permitAll()
